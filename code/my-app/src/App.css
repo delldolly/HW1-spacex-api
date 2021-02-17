@@ -27,13 +27,13 @@ html body {
 }
 
 .topnav a:hover {
-  background-color: #aaa;
+  background-color: rgb(255, 230, 0);
   color: black;
   text-decoration: none;
 }
 
 .topnav > .is-active {
-  background-color: #ddd;
+  background-color: rgb(255, 187, 0);
   color: black;
   font-weight: 700;
 }

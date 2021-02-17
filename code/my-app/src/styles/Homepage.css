@@ -50,6 +50,40 @@
     font-weight: 600;
     text-shadow: 3px 3px 5px rgba(145, 145, 145, 0.5);
   }
+
+  .info-text {
+    height: 100vh;
+    color: #fff;
+    background-image: url("../img/launches-rocket.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+  }
+
+  div.info {
+    width: calc(100vw - 50%);
+    margin: 3vmax 0;
+    padding: 0 30px;
+    text-shadow: 3px 3px 5px rgba(170, 170, 170, 0.5);
+  }
+
+  div.info h1 {
+    margin: 2vmax 0;
+    font-size: 4vmax;
+  }
+
+  p.info {
+    border: none;
+    padding-top: 2vmax;
+    font-size: 1.5vmax;
+  }
+
+  span.bold {
+    font-weight: bold;
+  }
   
   .rocket-info {
     color: #fff;
@@ -150,3 +184,15 @@
     100% { transform:translate(0,30px); opacity: 0; }
   }
   /* end arrow */
+
+  @media only screen and (max-width: 800px) {
+      div.info {
+        width: calc(100vw - 30%);
+      }
+
+      p.info {
+        border: none;
+        padding-top: 2vmax;
+        font-size: 2vmax;
+      }
+  }

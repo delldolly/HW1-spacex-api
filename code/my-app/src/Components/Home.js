@@ -54,6 +54,20 @@ const Home = (props) => {
             </div>
 
             {/* Info */}
+            <div className="info-text">
+                <div className="info">
+                    <h1>What is SpaceX</h1>
+                    <p className="info">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span className="bold">Space Exploration Technologies Corp. (SpaceX)</span> is an American aerospace manufacturer 
+                        and space transportation services company headquartered in Hawthorne, California. It was founded in 2002 by Elon Musk 
+                        with the goal of reducing space transportation costs to enable the colonization of Mars. SpaceX has developed several 
+                        launch vehicles and rocket engines, as well as the Dragon cargo spacecraft and the Starlink satellite constellation 
+                        (providing internet access), and has flown humans and cargo to the International Space Station on the SpaceX Dragon 2.
+                    </p>
+                </div>
+            </div>
+
+            {/* Next page */}
             <div className="rocket-info">
                 <div className="go-to-rocket">
                     <h1>Rocket</h1>

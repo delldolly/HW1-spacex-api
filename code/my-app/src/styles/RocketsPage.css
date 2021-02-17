@@ -1,0 +1,32 @@
+/* @import url('https://fonts.googleapis.com/css?family=Roboto'); */
+
+/* img{
+    width: 100%;
+    height: 600px;
+    display: block;
+} */
+
+/* .slide-container{
+    height: 500px;
+} */
+
+p{
+    border-bottom: 1px solid lightgray;
+}
+
+.rocketImg{
+    height: calc(100vh - 55px);
+    width: 100%;
+    background-size: cover;
+    color: lightgrey
+}
+
+.inner-left-middle{
+    left: 100px;
+}
+
+.inner-left-middle{
+    /* -webkit-transform: translate(0, 50%); */
+    transform: translate(0, 50%);
+    position: absolute;
+}

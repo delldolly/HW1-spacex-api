@@ -19,13 +19,17 @@ const App = () => {
     
     <Router>
       <div class="topnav">
-        <Link to="/">Home</Link>
-        <Link to="/Rockets">Rockets</Link>
-        <Link to="/Launches">Launches</Link>
-      
-
-        
+        <Link to="/" activeClassName="is-active">
+          Home
+        </Link>
+        <Link to="/Rockets" activeClassName="is-active">
+          Rockets
+        </Link>
+        <Link to="/Launches" activeClassName="is-active">
+          Launches
+        </Link>
       </div>
+
       <Switch>
           <Route path="/Rockets">
             <Rockets />

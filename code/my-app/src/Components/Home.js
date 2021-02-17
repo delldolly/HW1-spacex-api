@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { Container } from 'reactstrap';
+import { Link } from "react-router-dom";
+import { Container, Button } from 'reactstrap';
+
+import '../styles/Homepage.css';
 
 const Home = (props) => {
     const [info, setInfo] = useState([])
@@ -24,8 +27,12 @@ const Home = (props) => {
     //     padding: 0
     // }
     const contStyle = {
-        padding: 0,
-        backgroundColor: "#000"
+        padding: 0
+    }
+    const buttonStyle = {
+        color: "#fff",
+        borderColor: "#fff",
+        fontSize: "2vmin"
     }
     return (
         <Container className="themed-container" fluid={true} style={contStyle}>
@@ -45,9 +52,24 @@ const Home = (props) => {
             </div>
 
             {/* Info */}
-            <div className="info-text">
-                
+            <div className="rocket-info">
+                <div className="go-to-rocket">
+                    <h1>Rocket</h1>
+                    <Link to="/Rockets">
+                        <Button outline size="lg" style={buttonStyle}>View Rocket</Button>
+                    </Link>
+                </div>
             </div>
+
+            <div className="launches-info">
+                <div className="go-to-launches">
+                    <h1>Launches</h1>
+                    <Link to="/Launches">
+                        <Button outline size="lg" style={buttonStyle}>View Launches</Button>
+                    </Link>
+                </div>
+            </div>
+            
         </Container>
     )
 }

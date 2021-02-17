@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "comma-number": "^2.0.1",
     "react": "^17.0.1",
     "react-app": "^1.1.2",
     "react-bootstrap": "^1.5.0",

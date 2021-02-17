@@ -1,32 +1,49 @@
-/* @import url('https://fonts.googleapis.com/css?family=Roboto'); */
-
-/* img{
-    width: 100%;
-    height: 600px;
-    display: block;
-} */
-
-/* .slide-container{
-    height: 500px;
-} */
-
-p{
-    border-bottom: 1px solid lightgray;
-}
-
-.rocketImg{
+.rocketImg {
     height: calc(100vh - 55px);
     width: 100%;
+    color: lightgrey;
     background-size: cover;
-    color: lightgrey
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
 }
 
-.inner-left-middle{
-    left: 100px;
+.inner-left-middle {
+    padding: 0 5vmin;
+    display: flex;
+    flex-direction: column;
 }
 
-.inner-left-middle{
-    /* -webkit-transform: translate(0, 50%); */
-    transform: translate(0, 50%);
-    position: absolute;
+.inner-left-middle h5 {
+    font-size: 1.5vmax;
+}
+
+.inner-left-middle h1 {
+    font-size: 4vmax;
+}
+
+.detail-table tr {
+    border-bottom: 1px solid lightgray;
+    padding: 10px 0;
+    width: 2vmax;
+}
+
+.detail-table td {
+    font-size: 1.15vmax;
+    padding: 10px 0;
+}
+
+td.detail-sub {
+    text-align: left;
+    padding-right: 1.6vmax;
+}
+
+td.detail-value {
+    text-align: right;
+    padding-left: 1.6vmax;
+}
+
+td.detail-value span {
+    color: #888;
 }

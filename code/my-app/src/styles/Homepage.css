@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cuprum:ital@1&display=swap');
+
 /* Homepage */
 .home-header {
     height: calc(100vh - 55px);
@@ -43,6 +45,7 @@
   }
   
   span.quote {
+    font-family: 'Cuprum', sans-serif;
     color: rgb(175, 175, 175);
     width: calc(100vw - 20%);
     font-size: 3vmin;
@@ -67,7 +70,7 @@
     width: calc(100vw - 50%);
     margin: 3vmax 0;
     padding: 0 30px;
-    text-shadow: 3px 3px 5px rgba(170, 170, 170, 0.5);
+    text-shadow: 3px 3px 5px rgba(148, 148, 148, 0.5);
   }
 
   div.info h1 {
@@ -78,7 +81,7 @@
   p.info {
     border: none;
     padding-top: 2vmax;
-    font-size: 1.5vmax;
+    font-size: 1.3vmax;
   }
 
   span.bold {
@@ -185,7 +188,7 @@
   }
   /* end arrow */
 
-  @media only screen and (max-width: 800px) {
+  @media only screen and (max-width: 880px) {
       div.info {
         width: calc(100vw - 30%);
       }
@@ -193,6 +196,6 @@
       p.info {
         border: none;
         padding-top: 2vmax;
-        font-size: 2vmax;
+        font-size: 1.7vmax;
       }
   }

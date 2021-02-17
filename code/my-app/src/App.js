@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Link,
   useRouteMatch,
   useParams,
   NavLink
@@ -15,6 +16,7 @@ import Rockets from './Components/Rockets';
 import Launches from './Components/Launches';
 
 import logo from './img/logo.png';
+import { Nav } from "reactstrap";
 
 const App = () => {
   const logoStyle = {
@@ -27,15 +29,17 @@ const App = () => {
         <div className="logo-img">
           <img src={logo} style={logoStyle} />
         </div>
-        <NavLink exact to="/" activeClassName="is-active">
-          <span>Home</span>
-        </NavLink>
-        <NavLink to="/Rockets" activeClassName="is-active">
-          <span>Rockets</span>
-        </NavLink>
-        <NavLink to="/Launches" activeClassName="is-active">
-          <span>Launches</span>
-        </NavLink>
+        <div className="nav-menu">
+          <NavLink exact to="/" activeClassName="is-active">
+            <span>Home</span>
+          </NavLink>
+          <NavLink to="/Rockets" activeClassName="is-active">
+            <span>Rockets</span>
+          </NavLink>
+          <NavLink to="/Launches" activeClassName="is-active">
+            <span>Launches</span>
+          </NavLink>
+        </div>
       </div>
 
       <Switch>

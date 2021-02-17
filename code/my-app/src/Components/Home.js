@@ -18,14 +18,6 @@ const Home = (props) => {
         },
         [],
     )
-    // const rowStyle = {
-    //     margin: 0,
-    //     width: "100vw",
-    //     height: "calc(100vh - 55px)"
-    // };
-    // const colStyle = {
-    //     padding: 0
-    // }
     const contStyle = {
         padding: 0
     }
@@ -34,6 +26,7 @@ const Home = (props) => {
         borderColor: "#fff",
         fontSize: "1.5vmax"
     }
+    
     return (
         <Container className="themed-container" fluid={true} style={contStyle}>
             {/* Header */}

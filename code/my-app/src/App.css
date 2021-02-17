@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
 html body {
   background-color: #000;
+  font-family: 'Comfortaa', cursive;
 }
 
 .topnav {
@@ -12,6 +15,7 @@ html body {
   display: flex;
   align-items: center;
   text-align: center;
+  justify-content: space-between;
 }
 
 .topnav a {
@@ -32,13 +36,18 @@ html body {
   text-decoration: none;
 }
 
-.topnav > .is-active {
-  background-color: rgb(255, 187, 0);
-  color: black;
-  font-weight: 700;
-}
-
 .logo-img {
   padding: 0 16px;
   height: 35px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-menu > .is-active {
+  background-color: rgb(255, 187, 0);
+  color: black;
+  font-weight: 900;
 }

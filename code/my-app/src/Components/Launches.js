@@ -21,6 +21,8 @@ export default function Launches(){
     const [launchSuccessList, setLaunchSuccessList] = useState([]);
 
     const [filterYear, setFilterYear] = useState();
+    const [filterName, setFilterName] = useState();
+    const [filterSuccess, setFilterSuccess] = useState();
     useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -36,7 +38,7 @@ export default function Launches(){
             setRocketNameList((pre) => [...pre,{ value:  item.rocket.rocket_name, label:  item.rocket.rocket_name }])
         })
         result.data.forEach((item) => {
-            setLaunchSuccessList((pre) => [...pre,{ value:  item.launch_success, label:  item.launch_success ? "yes":"no" }])
+            setLaunchSuccessList((pre) => [...pre,{ value:  item.launch_success, label:  item.launch_success ? 'success': 'unsuccess'}])
         })
         
         console.log(launchSuccessList)
@@ -45,7 +47,7 @@ export default function Launches(){
     fetchData();
   }, []);
 
-  const handleChange = (e) => {
+  const handleChangeYear = (e) => {
     console.log("Fruit Selected!!");
     // console.log(e.value)
     console.log(e.value)
@@ -54,13 +56,32 @@ export default function Launches(){
     console.log(filterYear)
     console.log(filterYear)
   }
+  const handleChangeName = (e) => {
+    console.log("Fruit Selected!!");
+    // console.log(e.value)
+    // console.log(e.value)
+    // console.log(filterYear)
+    setFilterName(e.value);
+    console.log(filterName)
+    console.log(filterYear)
+  }
+  const handleChangeSuccess = (e) => {
+    console.log("Fruit Selected!!");
+    // console.log(e.value)
+    // console.log(e.value)
+    // console.log(filterYear)
+    setFilterSuccess(e.value);
+    console.log(filterSuccess)
+    console.log(filterYear)
+    console.log(filterName)
+  }
 
   return (
     <>
-     <Select options={launchYearList} value={filterYear} onChange={handleChange}>
+     <Select options={launchYearList} value={filterYear} onChange={handleChangeYear}>
      </Select>
-     <Select options={rocketNameList} />
-     <Select options={launchSuccessList} />
+     <Select options={rocketNameList} value={filterName} onChange={handleChangeName}/>
+     <Select options={launchSuccessList} value={filterSuccess} onChange={handleChangeSuccess}/>
      
      <Table>
       <thead>
@@ -73,30 +94,26 @@ export default function Launches(){
         </tr>
       </thead>
       <tbody>
-      {data.filter(item => item.launch_year.includes(filterYear)).map((launche) => {
+      {/* .includes(filterSuccess) */}
+      {data.filter(item => item.launch_year.includes(filterYear))
+      .filter(yItem => yItem.rocket.rocket_name.includes(filterName))
+      .filter(nItem => (nItem.launch_success?'yes': 'no').includes(filterSuccess?'yes': 'no'))
+      .map((launche) => {
           return(
             <tr>
                 <th scope="row">{launche.flight_number}</th>
                 <td>{launche.mission_name}</td>
                 <td>{launche.launch_year}</td>
                 <td>{launche.rocket.rocket_name}</td>
+                {console.log(launche.launch_success)}
+                {console.log(filterSuccess+"1")}
                 <td>{launche.launch_success ? 'success': 'unsuccess'}</td>
             </tr>
           )
         //  console.log(filterYear)
      })}
-          {/* {data.map((launche) => {
-              return(
-                <tr>
-                    <th scope="row">{launche.flight_number}</th>
-                    <td>{launche.mission_name}</td>
-                    <td>{launche.launch_year}</td>
-                    <td>{launche.rocket.rocket_name}</td>
-                    <td>{launche.launch_success ? 'success': 'unsuccess'}</td>
-                </tr>
-              )
-          })} */}
       </tbody>
+      {console.log("success load")}
     </Table>
     
     {/* <ul>

@@ -15,15 +15,47 @@ const Home = (props) => {
         },
         [],
     )
+    // const rowStyle = {
+    //     margin: 0,
+    //     width: "100vw",
+    //     height: "calc(100vh - 55px)"
+    // };
+    // const colStyle = {
+    //     padding: 0
+    // }
+    const contStyle = {
+        padding: 0,
+        backgroundColor: "#000"
+    }
     return (
-        <Container className="themed-container" fluid={true} style={{padding: 0}}>
+        <Container className="themed-container" fluid={true} style={contStyle}>
+            {/* Header */}
             <div className="home-header">
-                <h1>{info.name}</h1>
-                <a class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
+                <div className="header-name">
+                    <span>{info.name}</span>
+                </div>
+                <div className="scroll-arrow">
+                    <a class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
+                </div>
             </div>
-            <ul>
-                <li>Summary: {info.summary}</li>
-            </ul>
+
+            {/* Quote */}
+            <div className="quote-text">
+                <span className="quote">" {info.summary} "</span>
+            </div>
+
+            {/* Info */}
+            <div className="info-text">
+                <div>
+                    <span>{info.name}</span>  is an American aerospace manufacturer and space transportation services company 
+                    headquartered in {info.headquarters.city}, {info.headquarters.state}.
+                    It was founded in {info.founded} by {info.founder}<br/>
+                    CEO and CTO : {info.ceo}<br/>
+                    COO : {info.coo}<br/>
+                    Number of employees : {info.employees}<br/>
+                    
+                </div>
+            </div>
         </Container>
     )
 }

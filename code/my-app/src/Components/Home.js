@@ -32,7 +32,7 @@ const Home = (props) => {
     const buttonStyle = {
         color: "#fff",
         borderColor: "#fff",
-        fontSize: "2vmin"
+        fontSize: "1.5vmax"
     }
     return (
         <Container className="themed-container" fluid={true} style={contStyle}>
@@ -48,7 +48,9 @@ const Home = (props) => {
 
             {/* Quote */}
             <div className="quote-text">
-                <span className="quote">" {info.summary} "</span>
+                <span className="quote">
+                    "<br/><br/> {info.summary} <br/><br/>"
+                </span>
             </div>
 
             {/* Info */}

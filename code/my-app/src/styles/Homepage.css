@@ -66,7 +66,13 @@
   }
 
   .go-to-rocket {
-      padding: 0 20px;
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+
+  .go-to-rocket h1 {
+    font-size: 4.5vmax;
+    margin-bottom: 2vmax;
   }
   
   .launches-info {
@@ -86,6 +92,11 @@
   .go-to-launches {
     padding: 0 20px;
     text-align: right;
+  }
+
+  .go-to-launches h1 {
+    font-size: 4.5vmax;
+    margin-bottom: 2vmax;
   }
   
   /* End Homepage */

@@ -9,24 +9,36 @@ html body {
   top: 0;
   height: 55px;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
 .topnav a {
-  float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  margin: 0 4px;
+  padding: 6px 16px;
+  border-radius: 5px;
   text-decoration: none;
   font-size: 17px;
+  display: flex;
+  align-items: center;
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #aaa;
   color: black;
   text-decoration: none;
 }
 
-.topnav .is-active {
+.topnav > .is-active {
   background-color: #ddd;
   color: black;
+  font-weight: 700;
+}
+
+.logo-img {
+  padding: 0 16px;
+  height: 35px;
 }

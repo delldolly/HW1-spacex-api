@@ -5,7 +5,8 @@ import {
   Route,
   Link,
   useRouteMatch,
-  useParams
+  useParams,
+  NavLink
 } from "react-router-dom";
 
 import './App.css';
@@ -14,34 +15,42 @@ import Home from './Components/Home';
 import Rockets from './Components/Rockets';
 import Launches from './Components/Launches';
 
+import logo from './img/logo.png';
+
 const App = () => {
-  return(
-    
+  const logoStyle = {
+    height: "90%"
+  }
+  return (
+
     <Router>
       <div class="topnav">
-        <Link to="/" activeClassName="is-active">
-          Home
-        </Link>
-        <Link to="/Rockets" activeClassName="is-active">
-          Rockets
-        </Link>
-        <Link to="/Launches" activeClassName="is-active">
-          Launches
-        </Link>
+        <div className="logo-img">
+          <img src={logo} style={logoStyle} />
+        </div>
+        <NavLink exact to="/" activeClassName="is-active">
+          <span>Home</span>
+        </NavLink>
+        <NavLink to="/Rockets" activeClassName="is-active">
+          <span>Rockets</span>
+        </NavLink>
+        <NavLink to="/Launches" activeClassName="is-active">
+          <span>Launches</span>
+        </NavLink>
       </div>
 
       <Switch>
-          <Route path="/Rockets">
-            <Rockets />
-          </Route>
-          <Route path="/Launches">
-            <Launches />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-          
-        </Switch>
+        <Route path="/Rockets">
+          <Rockets />
+        </Route>
+        <Route path="/Launches">
+          <Launches />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+
+      </Switch>
 
     </Router>
   )

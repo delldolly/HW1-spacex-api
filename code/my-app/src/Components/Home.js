@@ -46,15 +46,7 @@ const Home = (props) => {
 
             {/* Info */}
             <div className="info-text">
-                <div>
-                    <span>{info.name}</span>  is an American aerospace manufacturer and space transportation services company 
-                    headquartered in {info.headquarters.city}, {info.headquarters.state}.
-                    It was founded in {info.founded} by {info.founder}<br/>
-                    CEO and CTO : {info.ceo}<br/>
-                    COO : {info.coo}<br/>
-                    Number of employees : {info.employees}<br/>
-                    
-                </div>
+                
             </div>
         </Container>
     )

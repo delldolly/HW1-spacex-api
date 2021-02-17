@@ -7,6 +7,8 @@ import Select from 'react-select';
 
 import '../styles/LaunchPage.css';
 
+import { Container, Row, Col } from 'reactstrap';
+
 const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -26,7 +28,6 @@ export default function Launches(){
     useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        // 'https://hn.algolia.com/api/v1/search?query=redux',
         'https://api.spacexdata.com/v3/Launches',
       );
         console.log(result.data)
@@ -48,41 +49,55 @@ export default function Launches(){
   }, []);
 
   const handleChangeYear = (e) => {
-    console.log("Fruit Selected!!");
-    // console.log(e.value)
-    console.log(e.value)
-    console.log(filterYear)
     setFilterYear(e.value);
-    console.log(filterYear)
-    console.log(filterYear)
   }
   const handleChangeName = (e) => {
-    console.log("Fruit Selected!!");
-    // console.log(e.value)
-    // console.log(e.value)
-    // console.log(filterYear)
     setFilterName(e.value);
-    console.log(filterName)
-    console.log(filterYear)
   }
   const handleChangeSuccess = (e) => {
-    console.log("Fruit Selected!!");
-    // console.log(e.value)
-    // console.log(e.value)
-    // console.log(filterYear)
     setFilterSuccess(e.value);
-    console.log(filterSuccess)
-    console.log(filterYear)
-    console.log(filterName)
   }
+  const customStyles = {
+    option: (provided, state) => ({
+        ...provided,
+        borderBottom: "1px dotted gray",
+        background: "#000",
+        color: "white",
+        opacity: 1,
+        padding: 20,
+      }),
+    singleValue: (provided, state) => ({
+        ...provided,
+        color: "white",
+      }),
+    control: (base, state) => ({
+      ...base,
+      background: '#222',
+      // Overwrittes the different states of border
+      borderColor: state.isFocused ? "white" : "light",
+      // Removes weird border around container
+      boxShadow: state.isFocused ? 5 : null,
+      color: "white",
+      "&:hover": {
+        // Overwrittes the different states of border
+        borderColor: state.isFocused ? "light" : "white"
+      }
+    })
+  };
 
   return (
-    <>
-     <Select options={launchYearList} value={filterYear} onChange={handleChangeYear}>
-     </Select>
-     <Select options={rocketNameList} value={filterName} onChange={handleChangeName}/>
-     <Select options={launchSuccessList} value={filterSuccess} onChange={handleChangeSuccess}/>
-     
+    <> 
+     <Container>
+        <Row>
+            <Col xl='4'>
+                <Select styles={customStyles} placeholder={'Select year'} isLoading={true} options={launchYearList} onChange={handleChangeYear}></Select>
+           
+                <Select styles={customStyles} placeholder={'Select rocket name'} isLoading={true} options={rocketNameList} onChange={handleChangeName}/>
+    
+                <Select styles={customStyles} placeholder={'success?'} isLoading={true} options={launchSuccessList}  onChange={handleChangeSuccess}/>
+            </Col>
+            
+        <Col xl='8'>
      <Table>
       <thead>
         <tr>
@@ -94,7 +109,7 @@ export default function Launches(){
         </tr>
       </thead>
       <tbody>
-      {/* .includes(filterSuccess) */}
+      
       {data.filter(item => item.launch_year.includes(filterYear))
       .filter(yItem => yItem.rocket.rocket_name.includes(filterName))
       .filter(nItem => (nItem.launch_success?'yes': 'no').includes(filterSuccess?'yes': 'no'))
@@ -105,25 +120,16 @@ export default function Launches(){
                 <td>{launche.mission_name}</td>
                 <td>{launche.launch_year}</td>
                 <td>{launche.rocket.rocket_name}</td>
-                {console.log(launche.launch_success)}
-                {console.log(filterSuccess+"1")}
                 <td>{launche.launch_success ? 'success': 'unsuccess'}</td>
             </tr>
           )
-        //  console.log(filterYear)
      })}
       </tbody>
       {console.log("success load")}
     </Table>
-    
-    {/* <ul>
-     {data.map(item => (
-         <li key={item.objectID}>
-             <h3>{item.mission_name}</h3>
-           <a href={item.url}>{item.title}</a>
-         </li>
-       ))}
-     </ul> */}
+    </Col>
+    </Row>
+    </Container>
      </>
   )
 } 

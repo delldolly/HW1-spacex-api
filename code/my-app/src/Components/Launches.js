@@ -169,7 +169,7 @@ export default function Launches() {
                 .map((launche) => {
                   return (
                     <tr className="listTable" onClick={(e)=>{toLaunchDetail(launche.flight_number)}}>
-                      <th scope="row">{launche.flight_number}</th>
+                      <td scope="row">{launche.flight_number}</td>
                       <td>{launche.mission_name}</td>
                       <td>{launche.launch_year}</td>
                       <td>{launche.rocket.rocket_name}</td>

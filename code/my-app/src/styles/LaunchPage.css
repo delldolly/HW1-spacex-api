@@ -27,12 +27,24 @@ Select {
     padding-left: 1vmax;
 }
 
+.launches-table {
+    overflow-y: scroll;
+    height: calc(100vh - 95px);
+}
+
+.launches-table th {
+    position: sticky;
+    top: 0;
+    background-color: #202d40;
+}
+
 .launches-table thead {
     font-size: 2.3vmin;
 }
 
 .launches-table tbody {
     font-size: 2vmin;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .launches-table td, .launches-table th {
@@ -46,5 +58,12 @@ Select {
 
     .launches-table tbody {
         font-size: 2.5vmin;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .launches-table {
+        overflow-y: scroll;
+        height: calc(100vh - 130px);
     }
 }

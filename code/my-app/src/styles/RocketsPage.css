@@ -15,12 +15,14 @@
     flex-direction: column;
 }
 
-.inner-left-middle h5 {
-    font-size: 1.5vmax;
-}
-
 .inner-left-middle h1 {
     font-size: 4vmax;
+    font-weight: bold;
+}
+
+.inner-left-middle h4 {
+    font-size: 2vmax;
+    margin-bottom: 4vmin;
 }
 
 .detail-table tr {

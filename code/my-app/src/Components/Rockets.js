@@ -30,8 +30,8 @@ export default function Rockets() {
                 return (
                     <div className="rocketImg" style={{ backgroundImage: `url(${imageList[index]})` }}>
                         <div className='inner-left-middle'>
-                            <h5>{item.rocket_name}</h5>
-                            <h1>DETAIL</h1>
+                            <h1>{item.rocket_name}</h1>
+                            <h4>DETAIL</h4>
                             <table className="detail-table">
                                 <tbody>
                                     <tr>

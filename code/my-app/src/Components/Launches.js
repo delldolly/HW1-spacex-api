@@ -65,8 +65,8 @@ export default function Launches() {
   const handleChangeSuccess = (e) => {
     setFilterSuccess(e.value);
   }
-  const toLaunchDetail = (e) => {
-    history.push('/LaunchDetails');
+  const toLaunchDetail = (id) => {
+    history.push('/LaunchDetails/'+id);
   }
 
   const selectStyle = {
@@ -168,7 +168,7 @@ export default function Launches() {
                 .filter(nItem => (nItem.launch_success ? 'yes' : 'no').includes(filterSuccess))
                 .map((launche) => {
                   return (
-                    <tr className="listTable" onClick={toLaunchDetail}>
+                    <tr className="listTable" onClick={(e)=>{toLaunchDetail(launche.flight_number)}}>
                       <th scope="row">{launche.flight_number}</th>
                       <td>{launche.mission_name}</td>
                       <td>{launche.launch_year}</td>

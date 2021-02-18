@@ -1,5 +1,5 @@
 import React from 'react';
-import Launches from './Launches';
+import '../styles/LaunchDetails.css';
 
 export default function LauncheDetail(){
     return(

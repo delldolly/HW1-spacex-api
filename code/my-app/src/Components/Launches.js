@@ -9,7 +9,7 @@ import '../styles/LaunchPage.css';
 
 import { Container, Row, Col } from 'reactstrap';
 
-import {Link} from 'react-router-dom';
+import {Link,  useHistory } from 'react-router-dom';
 import '../styles/LaunchDetails.css';
 
 const options = [
@@ -17,9 +17,11 @@ const options = [
     { value: 'strawberry', label: 'Strawberry' },
     { value: 'vanilla', label: 'Vanilla' }
   ]
-  
+ 
+ 
 
 export default function Launches(){
+    let history = useHistory();
     const [data, setData] = useState([]);
     const [launchYearList, setLaunchYearList] = useState([{ value:  "", label:  "none" }]);
     const [rocketNameList, setRocketNameList] = useState([{ value:  "", label:  "none" }]);
@@ -28,9 +30,9 @@ export default function Launches(){
     //false page load finished
     const [LOADCHECKER, SETLOADCHECKER] = useState(true)
 
-    const [filterYear, setFilterYear] = useState();
-    const [filterName, setFilterName] = useState();
-    const [filterSuccess, setFilterSuccess] = useState();
+    const [filterYear, setFilterYear] = useState("");
+    const [filterName, setFilterName] = useState("");
+    const [filterSuccess, setFilterSuccess] = useState("");
     useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -39,9 +41,7 @@ export default function Launches(){
         console.log(result.data)
         setData(result.data);
         result.data.forEach((item) => {
-         
             setLaunchYearList((pre) => [...pre.filter((obj)=>obj.value!=item.launch_year),{ value: item.launch_year, label:  item.launch_year }])
- 
         })
         result.data.forEach((item) => {
             setRocketNameList((pre) => [...pre.filter((obj)=>obj.value!=item.rocket.rocket_name),{ value: item.rocket.rocket_name, label:  item.rocket.rocket_name }])
@@ -65,6 +65,10 @@ export default function Launches(){
   const handleChangeSuccess = (e) => {
     setFilterSuccess(e.value);
   }
+  const toLaunchDetail = (e) => {
+    history.push('/LaunchDetails');
+  }
+
   const customStyles = {
     option: (provided, state) => ({
         ...provided,
@@ -124,18 +128,15 @@ export default function Launches(){
       .filter(nItem => (nItem.launch_success?'yes':'no').includes(filterSuccess))
       .map((launche) => {
           return(
-            <tr className="list">
-              
-                <th scope="row"><Link to='/LaunchDetails'>{launche.flight_number}</Link></th>
-                <td><Link to='/LaunchDetails'>{launche.mission_name}</Link></td>
-                <td><Link to='/LaunchDetails'>{launche.launch_year}</Link></td>
-                <td><Link to='/LaunchDetails'>{launche.rocket.rocket_name}</Link></td>
-                <td><Link to='/LaunchDetails'>{launche.launch_success ? 'success': 'unsuccess'}</Link></td>
+            <tr className="listTable" onClick={toLaunchDetail}>
+                <th scope="row">{launche.flight_number}</th>
+                <td>{launche.mission_name}</td>
+                <td>{launche.launch_year}</td>
+                <td>{launche.rocket.rocket_name}</td>
+                <td>{launche.launch_success ? 'success': 'unsuccess'}</td>
                 {console.log(launche.launch_success?'yes':'no'.includes(filterSuccess))}
                 {console.log(filterSuccess)}
-                
             </tr>
-            
           )
      })}
       </tbody>

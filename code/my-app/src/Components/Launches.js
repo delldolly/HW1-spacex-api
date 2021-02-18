@@ -18,9 +18,9 @@ const options = [
 
 export default function Launches(){
     const [data, setData] = useState([]);
-    const [launchYearList, setLaunchYearList] = useState([]);
-    const [rocketNameList, setRocketNameList] = useState([]);
-    const [launchSuccessList, setLaunchSuccessList] = useState([]);
+    const [launchYearList, setLaunchYearList] = useState([{ value:  "", label:  "none" }]);
+    const [rocketNameList, setRocketNameList] = useState([{ value:  "", label:  "none" }]);
+    const [launchSuccessList, setLaunchSuccessList] = useState([{ value: "", label:  "none" }]);
 
     const [filterYear, setFilterYear] = useState();
     const [filterName, setFilterName] = useState();
@@ -39,7 +39,7 @@ export default function Launches(){
             setRocketNameList((pre) => [...pre,{ value:  item.rocket.rocket_name, label:  item.rocket.rocket_name }])
         })
         result.data.forEach((item) => {
-            setLaunchSuccessList((pre) => [...pre,{ value:  item.launch_success, label:  item.launch_success ? 'success': 'unsuccess'}])
+            setLaunchSuccessList((pre) => [...pre,{ value:  item.launch_success? 'yes': 'no', label:  item.launch_success ? 'success': 'unsuccess'}])
         })
         
         console.log(launchSuccessList)
@@ -64,7 +64,7 @@ export default function Launches(){
         background: "#000",
         color: "white",
         opacity: 1,
-        padding: 20,
+        padding: 10,
       }),
     singleValue: (provided, state) => ({
         ...provided,
@@ -87,7 +87,7 @@ export default function Launches(){
 
   return (
     <> 
-     <Container>
+     <Container className="Container">
         <Row>
             <Col xl='4'>
                 <Select styles={customStyles} placeholder={'Select year'} isLoading={true} options={launchYearList} onChange={handleChangeYear}></Select>
@@ -109,10 +109,10 @@ export default function Launches(){
         </tr>
       </thead>
       <tbody>
-      
+      {console.log(filterSuccess)}
       {data.filter(item => item.launch_year.includes(filterYear))
       .filter(yItem => yItem.rocket.rocket_name.includes(filterName))
-      .filter(nItem => (nItem.launch_success?'yes': 'no').includes(filterSuccess?'yes': 'no'))
+      .filter(nItem => (nItem.launch_success?'yes':'no').includes(filterSuccess))
       .map((launche) => {
           return(
             <tr>
@@ -121,7 +121,10 @@ export default function Launches(){
                 <td>{launche.launch_year}</td>
                 <td>{launche.rocket.rocket_name}</td>
                 <td>{launche.launch_success ? 'success': 'unsuccess'}</td>
+                {console.log(launche.launch_success?'yes':'no'.includes(filterSuccess))}
+                {console.log(filterSuccess)}
             </tr>
+            
           )
      })}
       </tbody>

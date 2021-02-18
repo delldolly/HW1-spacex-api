@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,24 +26,33 @@ const App = () => {
 
     <Router>
       <div class="topnav">
+        {/* Left - logo */}
+
         <Link to="/">
           <div className="logo-img">
             <img src={logo} style={logoStyle} />
           </div>
         </Link>
-        <div className="nav-menu">
+
+        {/* Right - menu */}
+        <ul className="nav-menu">
+
           <NavLink exact to="/" className="nav-menu" activeClassName="is-active">
-            <span>Home</span>
+            <li>Home</li>
           </NavLink>
+
           <NavLink to="/Rockets" className="nav-menu" activeClassName="is-active">
-            <span>Rockets</span>
+            <li>Rockets</li>
           </NavLink>
+
           <NavLink to="/Launches" className="nav-menu" activeClassName="is-active">
-            <span>Launches</span>
+            <li>Launches</li>
           </NavLink>
-        </div>
+
+        </ul>
       </div>
 
+      {/* Switch path */}
       <Switch>
         <Route path="/Rockets">
           <Rockets />

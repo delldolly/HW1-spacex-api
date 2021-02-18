@@ -37,14 +37,16 @@ html body {
 }
 
 .logo-img {
-  padding: 0 2vmax;
+  padding: 0 1vmax;
   height: 35px;
 }
 
 .nav-menu {
+  margin: 0;
   display: flex;
   align-items: center;
   padding: 0 2vmax;
+  list-style-type: none;
 }
 
 .nav-menu > .is-active {

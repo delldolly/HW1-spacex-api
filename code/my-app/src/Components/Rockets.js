@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/RocketsPage.css'
-import falcon9 from '../img/falcon_9.jpg'
-import falconHeavy from '../img/falcon_heavy.jpg'
-import starship from '../img/starship.jpg'
+import '../styles/RocketsPage.css';
+import falcon9 from '../img/falcon_9.jpg';
+import falconHeavy from '../img/falcon_heavy.jpg';
+import starship from '../img/starship.jpg';
+import test from '../img/image_1.jpg';
 import { string } from 'prop-types';
 
-const imageList = [falcon9, falcon9, falconHeavy, starship]
+const imageList = [test, falcon9, falconHeavy, starship]
 
 export default function Rockets() {
     const [data, setData] = useState([]);

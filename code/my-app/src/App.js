@@ -26,17 +26,19 @@ const App = () => {
 
     <Router>
       <div class="topnav">
-        <div className="logo-img">
-          <img src={logo} style={logoStyle} />
-        </div>
+        <Link to="/">
+          <div className="logo-img">
+            <img src={logo} style={logoStyle} />
+          </div>
+        </Link>
         <div className="nav-menu">
-          <NavLink exact to="/" activeClassName="is-active">
+          <NavLink exact to="/" className="nav-menu" activeClassName="is-active">
             <span>Home</span>
           </NavLink>
-          <NavLink to="/Rockets" activeClassName="is-active">
+          <NavLink to="/Rockets" className="nav-menu" activeClassName="is-active">
             <span>Rockets</span>
           </NavLink>
-          <NavLink to="/Launches" activeClassName="is-active">
+          <NavLink to="/Launches" className="nav-menu" activeClassName="is-active">
             <span>Launches</span>
           </NavLink>
         </div>

@@ -22,6 +22,9 @@ export default function Launches(){
     const [rocketNameList, setRocketNameList] = useState([{ value:  "", label:  "none" }]);
     const [launchSuccessList, setLaunchSuccessList] = useState([{ value: "", label:  "none" }]);
 
+    //false page load finished
+    const [LOADCHECKER, SETLOADCHECKER] = useState(true)
+
     const [filterYear, setFilterYear] = useState();
     const [filterName, setFilterName] = useState();
     const [filterSuccess, setFilterSuccess] = useState();
@@ -33,15 +36,17 @@ export default function Launches(){
         console.log(result.data)
         setData(result.data);
         result.data.forEach((item) => {
-            setLaunchYearList((pre) => [...pre,{ value:  item.launch_year, label:  item.launch_year }])
+         
+            setLaunchYearList((pre) => [...pre.filter((obj)=>obj.value!=item.launch_year),{ value: item.launch_year, label:  item.launch_year }])
+ 
         })
         result.data.forEach((item) => {
-            setRocketNameList((pre) => [...pre,{ value:  item.rocket.rocket_name, label:  item.rocket.rocket_name }])
+            setRocketNameList((pre) => [...pre.filter((obj)=>obj.value!=item.rocket.rocket_name),{ value: item.rocket.rocket_name, label:  item.rocket.rocket_name }])
         })
         result.data.forEach((item) => {
-            setLaunchSuccessList((pre) => [...pre,{ value:  item.launch_success? 'yes': 'no', label:  item.launch_success ? 'success': 'unsuccess'}])
+            setLaunchSuccessList((pre) => [...pre.filter((obj)=>obj.value!=(item.launch_success? 'yes': 'no')),{ value:  item.launch_success? 'yes': 'no', label:  item.launch_success ? 'success': 'unsuccess'}])
         })
-        
+        SETLOADCHECKER(false)
         console.log(launchSuccessList)
         console.log(data)
     };
@@ -65,6 +70,7 @@ export default function Launches(){
         color: "white",
         opacity: 1,
         padding: 10,
+        borderColor: state.isFocused ? "white" : "black",
       }),
     singleValue: (provided, state) => ({
         ...provided,
@@ -74,14 +80,14 @@ export default function Launches(){
       ...base,
       background: '#222',
       // Overwrittes the different states of border
-      borderColor: state.isFocused ? "white" : "light",
+      borderColor: state.isFocused ? "white" : "black",
       // Removes weird border around container
       boxShadow: state.isFocused ? 5 : null,
       color: "white",
-      "&:hover": {
-        // Overwrittes the different states of border
-        borderColor: state.isFocused ? "light" : "white"
-      }
+      // "&:hover": {
+      //   // Overwrittes the different states of border
+      //   borderColor: state.isFocused ? "light" : "white"
+      // }
     })
   };
 
@@ -90,11 +96,11 @@ export default function Launches(){
      <Container className="Container">
         <Row>
             <Col xl='4'>
-                <Select styles={customStyles} placeholder={'Select year'} isLoading={true} options={launchYearList} onChange={handleChangeYear}></Select>
+                <Select styles={customStyles} isDisabled={LOADCHECKER} placeholder={LOADCHECKER?'Loading...':'Select year'} isLoading={LOADCHECKER} options={launchYearList} onChange={handleChangeYear}></Select>
            
-                <Select styles={customStyles} placeholder={'Select rocket name'} isLoading={true} options={rocketNameList} onChange={handleChangeName}/>
+                <Select styles={customStyles} isDisabled={LOADCHECKER} placeholder={LOADCHECKER?'Loading...':'Select rocket name'} isLoading={LOADCHECKER} options={rocketNameList} onChange={handleChangeName}/>
     
-                <Select styles={customStyles} placeholder={'success?'} isLoading={true} options={launchSuccessList}  onChange={handleChangeSuccess}/>
+                <Select styles={customStyles} isDisabled={LOADCHECKER} placeholder={LOADCHECKER?'Loading...':'success?'} isLoading={LOADCHECKER} options={launchSuccessList}  onChange={handleChangeSuccess}/>
             </Col>
             
         <Col xl='8'>

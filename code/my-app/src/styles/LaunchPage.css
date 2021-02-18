@@ -10,3 +10,8 @@ Select{
 .Container{
     padding-top: 2%;
 }
+
+.list{
+    color: black;
+    text-decoration: none;
+}

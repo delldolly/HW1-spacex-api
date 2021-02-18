@@ -9,6 +9,9 @@ import '../styles/LaunchPage.css';
 
 import { Container, Row, Col } from 'reactstrap';
 
+import {Link} from 'react-router-dom';
+import '../styles/LaunchDetails.css';
+
 const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -121,14 +124,16 @@ export default function Launches(){
       .filter(nItem => (nItem.launch_success?'yes':'no').includes(filterSuccess))
       .map((launche) => {
           return(
-            <tr>
-                <th scope="row">{launche.flight_number}</th>
-                <td>{launche.mission_name}</td>
-                <td>{launche.launch_year}</td>
-                <td>{launche.rocket.rocket_name}</td>
-                <td>{launche.launch_success ? 'success': 'unsuccess'}</td>
+            <tr className="list">
+              
+                <th scope="row"><Link to='/LaunchDetails'>{launche.flight_number}</Link></th>
+                <td><Link to='/LaunchDetails'>{launche.mission_name}</Link></td>
+                <td><Link to='/LaunchDetails'>{launche.launch_year}</Link></td>
+                <td><Link to='/LaunchDetails'>{launche.rocket.rocket_name}</Link></td>
+                <td><Link to='/LaunchDetails'>{launche.launch_success ? 'success': 'unsuccess'}</Link></td>
                 {console.log(launche.launch_success?'yes':'no'.includes(filterSuccess))}
                 {console.log(filterSuccess)}
+                
             </tr>
             
           )

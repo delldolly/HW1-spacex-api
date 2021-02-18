@@ -14,6 +14,7 @@ import './App.css';
 import Home from './Components/Home';
 import Rockets from './Components/Rockets';
 import Launches from './Components/Launches';
+import LaunchDetail from './Components/LaunchDetail';
 
 import logo from './img/logo.png';
 import { Nav } from "reactstrap";
@@ -54,6 +55,9 @@ const App = () => {
 
       {/* Switch path */}
       <Switch>
+        <Route path="/LaunchDetails">
+          <LaunchDetail />
+        </Route>
         <Route path="/Rockets">
           <Rockets />
         </Route>

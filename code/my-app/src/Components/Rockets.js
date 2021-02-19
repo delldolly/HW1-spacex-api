@@ -38,6 +38,9 @@ export default function Rockets() {
                             <table className="detail-table">
                                 <tbody>
                                     <tr>
+                                        <td className="detail-sub">{item.description}</td>
+                                    </tr>
+                                    {/* <tr>
                                         <td className="detail-sub">HEIGHT</td>
                                         <td className="detail-value">{item.height.meters} m / <span>{item.height.feet} ft</span></td>
                                     </tr>
@@ -57,7 +60,7 @@ export default function Rockets() {
                                             </tr>
                                         )
                                     })
-                                    }
+                                    } */}
                                 </tbody>
                             </table>
                         </div>

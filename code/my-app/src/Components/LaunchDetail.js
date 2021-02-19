@@ -9,16 +9,21 @@ function RenderPage(props){
     return(
         <>
             <h1>{data.flight_number} : {data.mission_name}</h1>
-            {/* {data.mission_id.map((MID) => {return(<p>mission id{MID}</p>)})} */}
+            {data.mission_id.map((MID) => {return(<p>mission id{MID}</p>)})}
             <h4>launch_year : {data.launch_year}</h4>
-            <h6>date : {data.launch_date_local}</h6>
-            <h6>{data.launch_site.site_id}</h6>
-            <h6>{data.launch_site.site_name}</h6>
+            <h6>launch_date_utc : {data.launch_date_utc}</h6>
+            <h6>launch_window : {data.launch_window}</h6>
+            <h6>date local : {data.launch_date_local}</h6>
+            <h6>epoch : {data.epoch}</h6>
+            {/* <h6>payload id : {data.payload_id}</h6> */}
+            <h6>site id : {data.launch_site.site_id}</h6>
+            <h6>site name : {data.launch_site.site_name}</h6>
             <h6>{data.launch_site.site_name_long}</h6>
             <h6>launch status : {(data.launch_success? "success":"unsuccess")}</h6>
             <h5>detail</h5>
             <h6>{data.details}</h6>
             <h6>{data.static_fire_date_utc}</h6>
+            <h6>{data.tentative_max_precision}</h6>
             <h1>ROCKET </h1>
             <Link to={"/RocketsDetail/"+(data.rocket.rocket_id)}><h6>name : {data.rocket.rocket_name}</h6></Link>
             <h6>type : {data.rocket.rocket_type}</h6>

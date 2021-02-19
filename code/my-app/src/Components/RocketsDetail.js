@@ -16,7 +16,7 @@ import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
-
+const commaNumber = require('comma-number');
 const RenderPage = (props) => {
     const data = props.listData;
     return (
@@ -26,7 +26,7 @@ const RenderPage = (props) => {
                 slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}
-                // scrollbar={{ draggable: true }}
+            // scrollbar={{ draggable: true }}
             // onSwiper={(swiper) => console.log(swiper)}
             // onSlideChange={() => console.log('slide change')}
             >
@@ -40,6 +40,27 @@ const RenderPage = (props) => {
                         <h4>landing_legs</h4>
                         <h6>number : {data.landing_legs.number}</h6>
                         <h6>material : {data.landing_legs.material}</h6>
+                        
+                            <h6 className="detail-sub">HEIGHT</h6>
+                            <h6 className="detail-value">{data.height.meters} m / <span>{data.height.feet} ft</span></h6>
+                        
+                        
+                            <h6 className="detail-sub">DIAMETER</h6>
+                            <h6 className="detail-value">{data.diameter.meters} m / <span>{data.diameter.feet} ft</span></h6>
+                        
+                        
+                            <h6 className="detail-sub">MASS</h6>
+                            <h6 className="detail-value">{commaNumber(data.mass.kg)} kg / <span>{commaNumber(data.mass.lb)} lb</span></h6>
+                        
+                        {data.payload_weights.map((payload) => {
+                            return (<>
+                                
+                                    <h6 className="detail-sub">PAY LOAD TO {payload.id.toUpperCase()}</h6>
+                                    <h6 className="detail-value">{commaNumber(payload.kg)} kg / <span>{commaNumber(payload.lb)} lb</span></h6>
+                                </>
+                            )
+                        })
+                        }
                     </div></SwiperSlide>
                 <SwiperSlide>
                     <div className="swiperPage">
@@ -53,7 +74,7 @@ const RenderPage = (props) => {
                     <div className="swiperPage">
                         <h1>Payload weight</h1>
                         {data.payload_weights.map((payload) => {
-                            return(
+                            return (
                                 <ul>
                                     <li>id : {payload.id}</li>
                                     <li>name : {payload.name}</li>

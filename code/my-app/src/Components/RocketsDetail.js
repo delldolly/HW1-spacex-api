@@ -17,7 +17,8 @@ const RocketsDetail = () => {
     }, []);
     return(
         <>
-        <h1>{data.rocket_id}</h1>
+        <h1>{data.id}</h1>
+        <h1>{data.rocket_name}</h1>
         </>
     )
 }

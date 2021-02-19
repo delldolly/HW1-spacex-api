@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 
 import { Table } from 'reactstrap';
@@ -12,15 +12,12 @@ import { Container, Row, Col } from 'reactstrap';
 import { Link, useHistory } from 'react-router-dom';
 import '../styles/LaunchDetails.css';
 
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
-
-
 
 export default function Launches() {
+  // let data = [];
+  var launchYearLists = [{ value: "", label: "none" }];
+  var rocketNameLists = [{ value: "", label: "none" }];
+  var launchSuccessLists = [{ value: "", label: "none" }];
   let history = useHistory();
   const [data, setData] = useState([]);
   const [launchYearList, setLaunchYearList] = useState([{ value: "", label: "none" }]);
@@ -33,28 +30,29 @@ export default function Launches() {
   const [filterYear, setFilterYear] = useState("");
   const [filterName, setFilterName] = useState("");
   const [filterSuccess, setFilterSuccess] = useState("");
-  useEffect(() => {
+
+  useMemo(() => {
     const fetchData = async () => {
       const result = await axios(
         'https://api.spacexdata.com/v3/Launches',
       );
       console.log(result.data)
       setData(result.data);
-      result.data.forEach((item) => {
-        setLaunchYearList((pre) => [...pre.filter((obj) => obj.value != item.launch_year), { value: item.launch_year, label: item.launch_year }])
+      result.data.map((item) => {
+        launchYearLists = [...launchYearLists.filter((obj) => obj.value != item.launch_year), { value: item.launch_year, label: item.launch_year }]
+        rocketNameLists =  [...rocketNameLists.filter((obj) => obj.value != item.rocket.rocket_name), { value: item.rocket.rocket_name, label: item.rocket.rocket_name }]
+        launchSuccessLists = [...launchSuccessLists.filter((obj) => obj.value != (item.launch_success ? 'yes' : 'no')), { value: item.launch_success ? 'yes' : 'no', label: item.launch_success ? 'success' : 'unsuccess' }]
       })
-      result.data.forEach((item) => {
-        setRocketNameList((pre) => [...pre.filter((obj) => obj.value != item.rocket.rocket_name), { value: item.rocket.rocket_name, label: item.rocket.rocket_name }])
-      })
-      result.data.forEach((item) => {
-        setLaunchSuccessList((pre) => [...pre.filter((obj) => obj.value != (item.launch_success ? 'yes' : 'no')), { value: item.launch_success ? 'yes' : 'no', label: item.launch_success ? 'success' : 'unsuccess' }])
-      })
+      setLaunchYearList(launchYearLists)
+      setRocketNameList(rocketNameLists)
+      setLaunchSuccessList(launchSuccessLists)
       SETLOADCHECKER(false)
       console.log(launchSuccessList)
       console.log(data)
     };
     fetchData();
   }, []);
+  
 
   const handleChangeYear = (e) => {
     setFilterYear(e.value);

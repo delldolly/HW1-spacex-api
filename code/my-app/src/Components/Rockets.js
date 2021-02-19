@@ -7,9 +7,12 @@ import starship from '../img/starship.jpg';
 import test from '../img/image_1.jpg';
 import { string } from 'prop-types';
 
+import { Link, useHistory } from 'react-router-dom';
+
 const imageList = [test, falcon9, falconHeavy, starship]
 
 export default function Rockets() {
+    let history = useHistory();
     const [data, setData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
@@ -31,7 +34,7 @@ export default function Rockets() {
                     <div className="rocketImg" style={{ backgroundImage: `url(${imageList[index]})` }}>
                         <div className='inner-left-middle'>
                             <h1>{item.rocket_name}</h1>
-                            <h4>DETAIL</h4>
+                            <h4>DETAIL<Link to={"/RocketsDetail/"+(item.rocket_id)}><h6>name : {item.rocket_name}</h6></Link></h4>
                             <table className="detail-table">
                                 <tbody>
                                     <tr>

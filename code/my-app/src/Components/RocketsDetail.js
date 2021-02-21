@@ -26,8 +26,37 @@ import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import 'swiper/components/effect-fade/effect-fade.scss';
 
+import falcon_1 from '../img/falcon_1.png';
+import fc1_launch from '../img/fc1_launch.jpg';
+import fc1_s1 from '../img/fc1_s1.png';
+import fc1_s2 from '../img/fc1_s2.jpg';
+import fc1_engines from '../img/fc1_engines.png';
+
+import falcon_9 from '../img/falcon_9.jpg';
+import fc9_launch from '../img/fc9_launch.jpg';
+import fc9_s1 from '../img/fc9_s1.jpg';
+import fc9_s2 from '../img/fc9_s2.jpg';
+import fc9_engines from '../img/fc9_engines.png';
+
+import falcon_heavy from '../img/falcon_heavy.jpg';
+import fh_launch from '../img/fh_launch.jpg';
+import fh_s1 from '../img/fh_s1.jpg';
+import fh_s2 from '../img/fh_s2.jpg';
+import fh_engines from '../img/fh_engines.jpg';
+
+import starship from '../img/starship.jpg';
+import sh_launch from '../img/sh_launch.jpg';
+import sh_s1 from '../img/sh_s1.png';
+import sh_s2 from '../img/sh_s2.png';
+import sh_engines from '../img/sh_engines.png';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
+const imgBG = [[],
+    [falcon_1, fc1_launch, fc1_s1, fc1_s2, fc1_engines],
+    [falcon_9, fc9_launch, fc9_s1, fc9_s2, fc9_engines],
+    [falcon_heavy, fh_launch, fh_s1, fh_s2, fh_engines],
+    [starship, sh_launch, sh_s1, sh_s2, sh_engines]
+]
 const commaNumber = require('comma-number');
 const RenderPage = (props) => {
     const data = props.listData;
@@ -49,7 +78,7 @@ const RenderPage = (props) => {
 
                 {/* 1: Overview */}
                 <SwiperSlide>
-                    <div className="swiperPage">
+                    <div className="swiperPage"  style={{ backgroundImage: `url(${imgBG[data.id][0]})` }}>
 
                         <div className="detail-overview">
                             <h4>{data.rocket_name}</h4>
@@ -86,7 +115,7 @@ const RenderPage = (props) => {
 
                 {/* 2: Launches */}
                 <SwiperSlide>
-                    <div className="swiperPage">
+                    <div className="swiperPage" style={{ backgroundImage: `url(${imgBG[data.id][1]})` }}>
                         <div className="detail-overview">
                             <h4>{data.rocket_name}</h4>
                             <h1>Launches</h1>
@@ -114,7 +143,7 @@ const RenderPage = (props) => {
 
                 {/* 3: First stage */}
                 <SwiperSlide>
-                    <div className="swiperPage">
+                    <div className="swiperPage" style={{ backgroundImage: `url(${imgBG[data.id][2]})` }}>
                         <div className="detail-overview">
                             <h4>{data.rocket_name}</h4>
                             <h1>First stage</h1>
@@ -200,7 +229,7 @@ const RenderPage = (props) => {
 
                 {/* 4: Second stage */}
                 <SwiperSlide>
-                    <div className="swiperPage">
+                    <div className="swiperPage" style={{ backgroundImage: `url(${imgBG[data.id][3]})` }}>
                         <div className="detail-overview">
                             <h4>{data.rocket_name}</h4>
                             <h1>Second stage</h1>
@@ -290,7 +319,7 @@ const RenderPage = (props) => {
 
                 {/* 5: Engines */}
                 <SwiperSlide>
-                    <div className="swiperPage">
+                    <div className="swiperPage" style={{ backgroundImage: `url(${imgBG[data.id][4]})` }}>
                         <div className="detail-overview" style={{textTransform: "capitalize"}}>
                             <h4>{data.rocket_name} Engines</h4>
                             <h1>{data.engines.type}</h1>

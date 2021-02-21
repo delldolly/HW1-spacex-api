@@ -32,10 +32,7 @@ const commaNumber = require('comma-number');
 const RenderPage = (props) => {
     const data = props.listData;
     const [activeTab, setActiveTab] = useState('1');
-
-    const navLink = {
-        color: "#fff"
-    }
+    
     return (
         <>
             <Swiper

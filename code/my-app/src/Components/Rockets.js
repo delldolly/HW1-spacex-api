@@ -8,7 +8,7 @@ import '../styles/RocketsPage.css';
 import falcon9 from '../img/falcon_9.jpg';
 import falconHeavy from '../img/falcon_heavy.jpg';
 import starship from '../img/starship.jpg';
-import test from '../img/image_1.jpg';
+import test from '../img/falcon_1.png';
 // import { string } from 'prop-types';
 
 const imageList = [test, falcon9, falconHeavy, starship]

@@ -12,7 +12,6 @@
     align-items: center;
 }
 
-/* Table */
 .detail-overview {
     padding: 0 7vmin;
     display: flex;
@@ -31,6 +30,7 @@
     margin-bottom: 1.8vmin;
 }
 
+/* Table */
 .detail-table tr {
     border-bottom: 1px solid lightgray;
     padding: 10px 0;

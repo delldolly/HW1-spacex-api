@@ -1,38 +1,96 @@
-import React, {useState, useEffect} from 'react';
-import '../styles/LaunchDetails.css';
-import {useParams, Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function RenderPage(props){
+import '../styles/LaunchDetails.css';
+
+import null_patch from '../img/launches_logo.jpg';
+
+import { useParams, Link } from 'react-router-dom';
+import { Container, Row, Col, Button } from 'reactstrap';
+
+function RenderPage(props) {
     const data = props.listData;
+
+
+    const buttonStyle = {
+        fontSize: "1.5vmax",
+        fontWeight: 700,
+        fontSize: "1.5vmax"
+    }
+
+    // convert date
+    const launches_date_utc = new Date(data.launch_date_utc);
+    const hr = launches_date_utc.getUTCHours();
+    const min = launches_date_utc.getUTCMinutes();
+    const sec = launches_date_utc.getUTCMilliseconds();
+    const mm = launches_date_utc.getMonth() + 1;
+    const dd = launches_date_utc.getDate();
+    const launches_date = launches_date_utc.getFullYear() + '-' + (mm < 10 ? '0' + mm : mm) + '-' + (dd < 10 ? '0' + dd : dd)
+        + ' ' + (hr < 10 ? '0' + hr : hr) + ':' + (min < 10 ? '0' + min : min) + ':' + (sec < 10 ? '0' + sec : sec);
+
     console.log(props)
-    return(
-        <>
-            <h1>{data.flight_number} : {data.mission_name}</h1>
-            {data.mission_id.map((MID) => {return(<p>mission id{MID}</p>)})}
-            <h4>launch_year : {data.launch_year}</h4>
-            <h6>launch_date_utc : {data.launch_date_utc}</h6>
-            <h6>launch_window : {data.launch_window}</h6>
-            <h6>date local : {data.launch_date_local}</h6>
-            <h6>epoch : {data.epoch}</h6>
-            {/* <h6>payload id : {data.payload_id}</h6> */}
-            <h6>site id : {data.launch_site.site_id}</h6>
-            <h6>site name : {data.launch_site.site_name}</h6>
-            <h6>{data.launch_site.site_name_long}</h6>
-            <h6>launch status : {(data.launch_success? "success":"unsuccess")}</h6>
-            <h5>detail</h5>
-            <h6>{data.details}</h6>
-            <h6>{data.static_fire_date_utc}</h6>
-            <h6>{data.tentative_max_precision}</h6>
-            <h1>ROCKET </h1>
-            <Link to={"/Rockets/"+(data.rocket.rocket_id)}><h6>name : {data.rocket.rocket_name}</h6></Link>
-            <h6>type : {data.rocket.rocket_type}</h6>
-        </>
+    return (
+        <Container className="themed-container launches-detail" fluid={true}>
+            <Row>
+
+                <Col sm="12" md="6" lg={{ size: 6 }}>
+                    <div className="mission-img">
+                        <img className="mission-patch" src={data.links.mission_patch == null ? null_patch : data.links.mission_patch} />
+                    </div>
+                </Col>
+
+                <Col sm="12" md="6" lg={{ size: 6 }} className="mission-detail-side">
+                    <div className="mission-detail">
+                        {data.mission_id.map((MID) => { return (<p>mission id {MID}</p>) })}
+                        <h1>{data.flight_number} : {data.mission_name} ({data.launch_year})</h1>
+                        <h5>&nbsp;&nbsp;&nbsp;&nbsp;{data.details}</h5>
+                        <h5>Launch UTC date : {launches_date}</h5>
+                        <h5>Launch window : {data.launch_window}</h5>
+                    </div>
+                </Col>
+
+            </Row>
+
+            <Row>
+
+                <Col xs={{ size: 12, order: 2 }} md={{ size: 6, order: 1 }} className="mision-rocket-panel">
+                    <div className="inner-mision-rocket">
+                        <h1>ROCKET : {data.rocket.rocket_name}</h1>
+                        <p>type : {data.rocket.rocket_type}</p>
+                        <Link to={"/Rockets/" + (data.rocket.rocket_id)}>
+                            <Button outline color="warning" size="lg" style={buttonStyle}>View Rocket detail</Button>
+                        </Link>
+                    </div>
+                </Col>
+
+                <Col xs={{ size: 12, order: 1 }} md={{ size: 6, order: 2 }} className="mission-detail-panal">
+                    <div className="under-mission-detail">
+                        <table className="detail-table">
+                            <tbody>
+                                <tr>
+                                    <td className="detail-sub">launch status</td>
+                                    <td className="detail-value">{(data.launch_success ? "success" : "unsuccess")}</td>
+                                </tr>
+                                <tr>
+                                    <td className="detail-sub">site id</td>
+                                    <td className="detail-value">{data.launch_site.site_id}</td>
+                                </tr>
+                                <tr>
+                                    <td className="detail-sub">site name</td>
+                                    <td className="detail-value">{data.launch_site.site_name_long} ({data.launch_site.site_name})</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </Col>
+            </Row>
+
+        </Container>
     )
 }
 
-export default function LauncheDetail(){
-    const {id} = useParams();
+export default function LauncheDetail() {
+    const { id } = useParams();
     const [data, setData] = useState(false);
     const [LOADSTATUS, SETLOADSTATUS] = useState(true);
     useEffect(() => {
@@ -49,7 +107,7 @@ export default function LauncheDetail(){
     }, []);
     return (
         <>
-        {LOADSTATUS? "Loading...": <RenderPage listData={data}/>}
+            {LOADSTATUS ? "Loading..." : <RenderPage listData={data} />}
         </>
-        )
+    )
 }

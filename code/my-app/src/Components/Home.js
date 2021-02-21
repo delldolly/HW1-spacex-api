@@ -22,9 +22,8 @@ const Home = (props) => {
         padding: 0
     }
     const buttonStyle = {
-        color: "#fff",
-        borderColor: "#fff",
-        fontSize: "1.5vmax"
+        fontSize: "1.5vmax",
+        fontWeight: 500
     }
     
     return (
@@ -65,7 +64,7 @@ const Home = (props) => {
                 <div className="go-to-rocket">
                     <h1>Rocket</h1>
                     <Link to="/Rockets">
-                        <Button outline size="lg" style={buttonStyle}>View Rocket</Button>
+                        <Button outline color="light" size="lg" style={buttonStyle}>View Rocket</Button>
                     </Link>
                 </div>
             </div>
@@ -74,7 +73,7 @@ const Home = (props) => {
                 <div className="go-to-launches">
                     <h1>Launches</h1>
                     <Link to="/Launches">
-                        <Button outline size="lg" style={buttonStyle}>View Launches</Button>
+                        <Button outline color="light" size="lg" style={buttonStyle}>View Launches</Button>
                     </Link>
                 </div>
             </div>

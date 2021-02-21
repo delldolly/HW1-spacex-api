@@ -90,6 +90,7 @@
   
   .rocket-info {
     color: #fff;
+    text-shadow: 3px 3px 5px rgba(145, 145, 145, 0.5);
     height: 100vh;
     background-image: url("../img/mission-slider-02.webp");
     background-size: cover;
@@ -114,6 +115,7 @@
   
   .launches-info {
     color: #fff;
+    text-shadow: 3px 3px 5px rgba(145, 145, 145, 0.5);
     height: 100vh;
     background-image: url("../img/human_spaceflight_moon.jpg");
     background-size: cover;

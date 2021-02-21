@@ -13,16 +13,18 @@
     padding: 0 5vmin;
     display: flex;
     flex-direction: column;
+    width: calc(100vw - 50%);
 }
 
 .inner-left-middle h1 {
     font-size: 4vmax;
     font-weight: bold;
+    margin-bottom: 4vmin;
 }
 
-.inner-left-middle h4 {
-    font-size: 2vmax;
-    margin-bottom: 4vmin;
+.inner-left-middle p {
+    font-size: 1.3vmax;
+    margin-bottom: 5vmin;
 }
 
 .detail-table tr {
@@ -48,4 +50,10 @@ td.detail-value {
 
 td.detail-value span {
     color: #888;
+}
+
+@media only screen and (max-width: 750px) {
+    .inner-left-middle {
+        width: calc(100vw - 40%);
+    }
 }

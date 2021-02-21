@@ -64,7 +64,7 @@ export default function Launches() {
     setFilterSuccess(e.value);
   }
   const toLaunchDetail = (id) => {
-    history.push('/LaunchDetails/'+id);
+    history.push('/Launches/'+id);
   }
 
   const selectStyle = {
@@ -75,10 +75,6 @@ export default function Launches() {
   const rowSty = {
     margin: 0
   }
-
-  const blurFilter = {
-    backdropFilter: "blur(10px)"
-  } 
 
   const customStyles = {
     option: (provided, state) => ({
@@ -102,7 +98,7 @@ export default function Launches() {
       // Removes weird border around container
       boxShadow: state.isFocused ? 5 : null,
       color: "white",
-      fontSize: "2vmin"
+      fontSize: "2vmin",
       // "&:hover": {
       //   // Overwrittes the different states of border
       //   borderColor: state.isFocused ? "light" : "white"
@@ -115,6 +111,7 @@ export default function Launches() {
       <Row>
         <Col md="12" lg='3' className="filter-select">
           <Row style={rowSty}>
+
             <Col xs="4" lg='12' style={selectStyle}>
               <Select
                 styles={customStyles}
@@ -124,6 +121,7 @@ export default function Launches() {
                 options={launchYearList}
                 onChange={handleChangeYear} />
             </Col>
+
             <Col xs="4" lg='12' style={selectStyle}>
               <Select
                 styles={customStyles}
@@ -133,6 +131,7 @@ export default function Launches() {
                 options={rocketNameList}
                 onChange={handleChangeName} />
             </Col>
+
             <Col xs="4" lg='12' style={selectStyle}>
               <Select 
                 styles={customStyles} 
@@ -144,12 +143,11 @@ export default function Launches() {
             </Col>
           </Row>
 
-
-
         </Col>
 
         <Col md="12" lg='9' className="launches-table">
           <Table>
+
             <thead>
               <tr>
                 <th>flight_number</th>
@@ -159,6 +157,7 @@ export default function Launches() {
                 <th>launch success</th>
               </tr>
             </thead>
+
             <tbody>
               {console.log(filterSuccess)}
               {data.filter(item => item.launch_year.includes(filterYear))
@@ -178,7 +177,9 @@ export default function Launches() {
                   )
                 })}
             </tbody>
+
             {console.log("success load")}
+
           </Table>
         </Col>
       </Row>

@@ -56,10 +56,10 @@ const App = () => {
 
       {/* Switch path */}
       <Switch>
-        <Route path="/LaunchDetails/:id">
+        <Route path="/Launches/:id">
           <LaunchDetail />
         </Route>
-        <Route path="/RocketsDetail/:id">
+        <Route path="/Rockets/:id">
           <RocketsDetail />
         </Route>
         <Route path="/Rockets">

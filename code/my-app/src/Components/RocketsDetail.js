@@ -185,7 +185,7 @@ const RenderPage = (props) => {
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">burn time</td>
-                                                    <td className="detail-value">{data.first_stage.burn_time_sec} sec</td>
+                                                    <td className="detail-value">{data.first_stage.burn_time_sec!=null?data.first_stage.burn_time_sec:"-"} sec</td>
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">thrust at sea level</td>
@@ -272,7 +272,7 @@ const RenderPage = (props) => {
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">burn time</td>
-                                                    <td className="detail-value">{data.second_stage.burn_time_sec} sec</td>
+                                                    <td className="detail-value">{data.second_stage.burn_time_sec!=null?data.second_stage.burn_time_sec:"-"} sec</td>
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">thrust</td>
@@ -288,8 +288,8 @@ const RenderPage = (props) => {
                                     <div className="inner-content-tab">
                                         <p>Option</p>
                                         <ul className="detail-list">
-                                            <li>{data.second_stage.payloads.option_1}</li>
-                                            <li>{data.second_stage.payloads.option_2}</li>
+                                            <li>{data.second_stage.payloads.option_1!=null?data.second_stage.payloads.option_1:"-"}</li>
+                                            <li>{data.second_stage.payloads.option_2!=null?data.second_stage.payloads.option_2:"-"}</li>
                                         </ul>
 
                                         <p>Payload fairing</p>
@@ -298,13 +298,13 @@ const RenderPage = (props) => {
                                                 <tr>
                                                     <td className="detail-sub">height</td>
                                                     <td className="detail-value">
-                                                        {commaNumber(data.second_stage.payloads.composite_fairing.height.meters)} m / <span>{commaNumber(data.second_stage.payloads.composite_fairing.height.feet)} f</span>
+                                                        {data.second_stage.payloads.composite_fairing.height.meters!=null?commaNumber(data.second_stage.payloads.composite_fairing.height.meters):"-"} m / <span>{data.second_stage.payloads.composite_fairing.height.feet!=null?commaNumber(data.second_stage.payloads.composite_fairing.height.feet):"-"} f</span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">diameter</td>
                                                     <td className="detail-value">
-                                                        {commaNumber(data.second_stage.payloads.composite_fairing.diameter.meters)} m / <span>{commaNumber(data.second_stage.payloads.composite_fairing.diameter.feet)} f</span>
+                                                        {data.second_stage.payloads.composite_fairing.diameter.meters!=null?commaNumber(data.second_stage.payloads.composite_fairing.diameter.meters):"-"} m / <span>{data.second_stage.payloads.composite_fairing.diameter.feet!=null?commaNumber(data.second_stage.payloads.composite_fairing.diameter.feet):"-"} f</span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -365,15 +365,15 @@ const RenderPage = (props) => {
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">version</td>
-                                                    <td className="detail-value">{data.engines.version}</td>
+                                                    <td className="detail-value">{data.engines.version?data.engines.version:"-"}</td>
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">layout</td>
-                                                    <td className="detail-value">{data.engines.layout}</td>
+                                                    <td className="detail-value">{data.engines.layout?data.engines.layout:"-"}</td>
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">engine loss max</td>
-                                                    <td className="detail-value">{data.engines.engine_loss_max}</td>
+                                                    <td className="detail-value">{data.engines.engine_loss_max?data.engines.engine_loss_max:"-"}</td>
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">thrust to weight</td>

@@ -1,0 +1,71 @@
+nav {
+	background-color: #00F;
+	overflow: hidden;
+    padding: 1em;
+    border-bottom: 1px solid #000;
+    background-color: rgba(35, 35, 35, 0.7);
+    position: sticky;
+    top: 0;
+    /* height: 55px; */
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+nav a {
+		color: #FFF;
+	}
+
+nav	a:visited {
+		color: #FFF;
+	}
+
+	
+
+.navWide {
+	display: none;
+    margin: 0 auto;
+    float: right;
+}
+.navWide.wideDiv {
+    text-align: center;
+    float: right;
+}
+.navWide.wideDiv a {
+	text-decoration: none;
+	display: inline-block;
+	padding: 0 2em;
+}
+		
+	
+
+	
+
+.navNarrow i {
+	float: right;
+	cursor: pointer;
+	color: #FFF;
+}
+
+.navNarrow .narrowLinks {
+	display: none;
+}
+.navNarrow .narrowLinks a{
+	text-decoration: none;
+	display: block;
+	float: right;
+	clear: right;
+	padding: 0.5em 0;
+}
+
+
+@media (min-width: 630px) {
+    nav .navWide {
+	    display: block;
+    }
+
+    nav .navNarrow {
+	    display: none;
+    }
+}

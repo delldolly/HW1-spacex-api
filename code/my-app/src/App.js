@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 
 import './App.css';
+import './styles/HamburgerNavBar.css'
 
 import Home from './Components/Home';
 import Rockets from './Components/Rockets';
@@ -18,17 +19,65 @@ import LaunchDetail from './Components/LaunchDetail';
 import RocketsDetail from './Components/RocketsDetail';
 
 import logo from './img/logo.png';
-import { Nav } from "reactstrap";
 
 const App = () => {
   const logoStyle = {
     height: "90%"
   }
+  const burgerToggle = () => {
+		let linksEl = document.querySelector('.narrowLinks');
+		if (linksEl.style.display === 'block') {
+			linksEl.style.display = 'none';
+		} else {
+			linksEl.style.display = 'block';
+		}
+	}
   return (
 
     <Router>
-      <div class="topnav">
-        {/* Left - logo */}
+      <nav>
+       <Link to="/">
+          <div className="logo-img">
+            <img src={logo} style={logoStyle} />
+          </div>
+        </Link>
+				<div className="navWide">
+					<div className="wideDiv nav-menu">
+            <NavLink exact to="/" className="nav-menu" activeClassName="is-active">
+            <li>Home</li>
+          </NavLink>
+
+          <NavLink to="/Rockets" className="nav-menu" activeClassName="is-active">
+            <li>Rockets</li>
+          </NavLink>
+
+          <NavLink to="/Launches" className="nav-menu" activeClassName="is-active">
+            <li>Launches</li>
+          </NavLink>
+					</div>
+				</div>
+				<div className="navNarrow">
+          {/* <i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i> */}
+          <i onClick={burgerToggle}>
+          icon
+          </i>
+					<div className="narrowLinks nav-menu">
+            <NavLink exact to="/" className="nav-menu" activeClassName="is-active">
+            <li>Home</li>
+          </NavLink>
+
+          <NavLink to="/Rockets" className="nav-menu" activeClassName="is-active">
+            <li>Rockets</li>
+          </NavLink>
+
+          <NavLink to="/Launches" className="nav-menu" activeClassName="is-active">
+            <li>Launches</li>
+          </NavLink>
+					</div>
+				</div>
+			</nav>
+      {/* <div class="topnav">
+        Left - logo
 
         <Link to="/">
           <div className="logo-img">
@@ -36,7 +85,7 @@ const App = () => {
           </div>
         </Link>
 
-        {/* Right - menu */}
+        Right - menu
         <ul className="nav-menu">
 
           <NavLink exact to="/" className="nav-menu" activeClassName="is-active">
@@ -52,7 +101,7 @@ const App = () => {
           </NavLink>
 
         </ul>
-      </div>
+      </div> */}
 
       {/* Switch path */}
       <Switch>

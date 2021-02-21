@@ -39,7 +39,7 @@ const App = () => {
       <nav>
        <Link to="/">
           <div className="logo-img">
-            <img src={logo} style={logoStyle} />
+            <img src={logo} alt="" style={logoStyle} />
           </div>
         </Link>
 				<div className="navWide">

@@ -64,7 +64,7 @@ export default function Launches() {
     setFilterSuccess(e.value);
   }
   const toLaunchDetail = (id) => {
-    history.push('/Launches/'+id);
+    history.push('/Launches/' + id);
   }
 
   const selectStyle = {

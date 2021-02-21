@@ -291,30 +291,7 @@ const RenderPage = (props) => {
                     </div>
                 </SwiperSlide>
 
-                {/* 5: Payload */}
-                {/* <SwiperSlide>
-                    <div className="swiperPage">
-                        <div className="detail-overvie">
-                            <h4>{data.rocket_name}</h4>
-                            <h1>Payload weight</h1>
-
-
-                        </div>
-
-                        {data.payload_weights.map((payload) => {
-                            return (
-                                <ul>
-                                    <li>id : {payload.id}</li>
-                                    <li>name : {payload.name}</li>
-                                    <li>kg : {payload.kg}</li>
-                                    <li>lb : {payload.lb}</li>
-                                </ul>
-                            )
-                        })}
-                    </div>
-                </SwiperSlide> */}
-
-                {/* 6: Engines */}
+                {/* 5: Engines */}
                 <SwiperSlide>
                     <div className="swiperPage">
                         <div className="detail-overview" style={{textTransform: "capitalize"}}>

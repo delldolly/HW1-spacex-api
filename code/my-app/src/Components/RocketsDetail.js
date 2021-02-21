@@ -4,7 +4,17 @@ import axios from 'axios';
 
 import "../styles/RocketsDetail.css";
 
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+// Import Reactstrap
+import {
+    TabContent,
+    TabPane,
+    Nav,
+    NavItem,
+    NavLink
+} from 'reactstrap';
+
+
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, EffectFade, Mousewheel } from 'swiper';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,11 +24,18 @@ import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
+import 'swiper/components/effect-fade/effect-fade.scss';
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 const commaNumber = require('comma-number');
 const RenderPage = (props) => {
     const data = props.listData;
+    const [activeTab, setActiveTab] = useState('1');
+
+    const navLink = {
+        color: "#fff"
+    }
     return (
         <>
             <Swiper
@@ -26,53 +43,264 @@ const RenderPage = (props) => {
                 slidesPerView={1}
                 navigation
                 pagination={{ clickable: true }}
+                effect="fade"
+                mousewheel={true}
             // scrollbar={{ draggable: true }}
             // onSwiper={(swiper) => console.log(swiper)}
             // onSlideChange={() => console.log('slide change')}
             >
+
+                {/* 1: Overview */}
                 <SwiperSlide>
                     <div className="swiperPage">
-                        <h3>ID : {data.id}</h3>
-                        <h1>NAME : {data.rocket_name}</h1>
-                        <h6>rocket id : {data.rocket_id}</h6>
-                        <h3>description : {data.description}</h3>
-                        <h6>rocket_type : {data.rocket_type}</h6>
-                        <h4>landing_legs</h4>
-                        <h6>number : {data.landing_legs.number}</h6>
-                        <h6>material : {data.landing_legs.material}</h6>
-                        
-                            <h6 className="detail-sub">HEIGHT</h6>
-                            <h6 className="detail-value">{data.height.meters} m / <span>{data.height.feet} ft</span></h6>
-                        
-                        
-                            <h6 className="detail-sub">DIAMETER</h6>
-                            <h6 className="detail-value">{data.diameter.meters} m / <span>{data.diameter.feet} ft</span></h6>
-                        
-                        
-                            <h6 className="detail-sub">MASS</h6>
-                            <h6 className="detail-value">{commaNumber(data.mass.kg)} kg / <span>{commaNumber(data.mass.lb)} lb</span></h6>
-                        
-                        {data.payload_weights.map((payload) => {
-                            return (<>
-                                
-                                    <h6 className="detail-sub">PAY LOAD TO {payload.id.toUpperCase()}</h6>
-                                    <h6 className="detail-value">{commaNumber(payload.kg)} kg / <span>{commaNumber(payload.lb)} lb</span></h6>
-                                </>
-                            )
-                        })
-                        }
-                    </div></SwiperSlide>
-                <SwiperSlide>
-                    <div className="swiperPage">
-                        <h1>{data.rocket_name} Launches</h1>
-                        <h6>cost per launch : {data.cost_per_launch}</h6>
-                        <h6>first flight : {data.first_flight}</h6>
-                        <h6>success rate : {data.success_rate_pct}%</h6>
+
+                        <div className="detail-overview">
+                            <h4>{data.rocket_name}</h4>
+                            <h1>Overview</h1>
+
+                            <table className="detail-table">
+                                <tbody>
+                                    <tr>
+                                        <td className="detail-sub">height</td>
+                                        <td className="detail-value">{data.height.meters} m / <span>{data.height.feet} ft</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td className="detail-sub">diameter</td>
+                                        <td className="detail-value">{data.diameter.meters} m / <span>{data.diameter.feet} ft</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td className="detail-sub">mass</td>
+                                        <td className="detail-value">{commaNumber(data.mass.kg)} kg / <span>{commaNumber(data.mass.lb)} lb</span></td>
+                                    </tr>
+                                    {data.payload_weights.map((payload) => {
+                                        return (
+                                            <tr>
+                                                <td className="detail-sub">pay load to {payload.id}</td>
+                                                <td className="detail-value">{commaNumber(payload.kg)} kg / <span>{commaNumber(payload.lb)} lb</span></td>
+                                            </tr>
+                                        )
+                                    })
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </SwiperSlide>
+
+                {/* 2: Launches */}
                 <SwiperSlide>
                     <div className="swiperPage">
-                        <h1>Payload weight</h1>
+                        <div className="detail-overview">
+                            <h4>{data.rocket_name}</h4>
+                            <h1>Launches</h1>
+
+                            <table className="detail-table">
+                                <tbody>
+                                    <tr>
+                                        <td className="detail-sub">cost per launch</td>
+                                        <td className="detail-value">$ {commaNumber(data.cost_per_launch)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="detail-sub">first flight</td>
+                                        <td className="detail-value">{data.first_flight}</td>
+                                    </tr>
+                                    <tr>
+                                        <td className="detail-sub">success rate</td>
+                                        <td className="detail-value">{data.success_rate_pct} %</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </SwiperSlide>
+
+                {/* 3: First stage */}
+                <SwiperSlide>
+                    <div className="swiperPage">
+                        <div className="detail-overview">
+                            <h4>{data.rocket_name}</h4>
+                            <h1>First stage</h1>
+
+                            <Nav tabs>
+                                <NavItem className="tab-nav">
+                                    <NavLink
+                                        className={activeTab == '1' ? 'active' : ''}
+                                        onClick={() => setActiveTab('1')}
+                                    >
+                                        engines
+                                    </NavLink>
+                                </NavItem>
+
+                                <NavItem className="tab-nav">
+                                    <NavLink
+                                        className={activeTab == '2' ? 'active' : ''}
+                                        onClick={() => setActiveTab('2')}
+                                    >
+                                        landing legs
+                                    </NavLink>
+                                </NavItem>
+
+                            </Nav>
+
+                            <TabContent activeTab={activeTab} className="content-tab">
+
+                                <TabPane tabId="1">
+                                    <div className="inner-content-tab">
+                                        <table className="detail-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td className="detail-sub">number of engines</td>
+                                                    <td className="detail-value">{data.first_stage.engines}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">fuel amount</td>
+                                                    <td className="detail-value">{data.first_stage.fuel_amount_tons} tons</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">burn time</td>
+                                                    <td className="detail-value">{data.first_stage.burn_time_sec} sec</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">thrust at sea level</td>
+                                                    <td className="detail-value">
+                                                        {commaNumber(data.first_stage.thrust_sea_level.kN)} kN / <span>{commaNumber(data.first_stage.thrust_sea_level.lbf)} lbf</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">thrust in vacuum</td>
+                                                    <td className="detail-value">
+                                                        {commaNumber(data.first_stage.thrust_vacuum.kN)} kN / <span>{commaNumber(data.first_stage.thrust_vacuum.lbf)} lbf</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </TabPane>
+
+                                <TabPane tabId="2">
+                                    <div className="inner-content-tab">
+                                        <table className="detail-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td className="detail-sub">number of landing legs</td>
+                                                    <td className="detail-value">{data.landing_legs.number}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">material</td>
+                                                    <td className="detail-value">{data.landing_legs.material}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </TabPane>
+
+                            </TabContent>
+
+                        </div>
+                    </div>
+                </SwiperSlide>
+
+                {/* 4: Second stage */}
+                <SwiperSlide>
+                    <div className="swiperPage">
+                        <div className="detail-overview">
+                            <h4>{data.rocket_name}</h4>
+                            <h1>Second stage</h1>
+
+                            <Nav tabs>
+                                <NavItem className="tab-nav">
+                                    <NavLink
+                                        className={activeTab == '1' ? 'active' : ''}
+                                        onClick={() => setActiveTab('1')}
+                                    >
+                                        Engines
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem className="tab-nav">
+                                    <NavLink
+                                        className={activeTab == '2' ? 'active' : ''}
+                                        onClick={() => setActiveTab('2')}
+                                    >
+                                        Payload
+                                    </NavLink>
+                                </NavItem>
+                            </Nav>
+
+                            <TabContent activeTab={activeTab} className="content-tab">
+                                <TabPane tabId="1">
+                                    <div className="inner-content-tab">
+                                        <table className="detail-table">
+                                            <tbody>
+                                                {/* <tr>
+                                                <td className="detail-sub"></td>
+                                                <td className="detail-value"></td>
+                                            </tr> */}
+                                                <tr>
+                                                    <td className="detail-sub">number of engines</td>
+                                                    <td className="detail-value">{data.second_stage.engines}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">fuel amount</td>
+                                                    <td className="detail-value">{data.second_stage.fuel_amount_tons} tons</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">burn time</td>
+                                                    <td className="detail-value">{data.second_stage.burn_time_sec} sec</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">thrust</td>
+                                                    <td className="detail-value">
+                                                        {commaNumber(data.second_stage.thrust.kN)} kN / <span>{commaNumber(data.second_stage.thrust.lbf)} lbf</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </TabPane>
+                                <TabPane tabId="2">
+                                    <div className="inner-content-tab">
+                                        <p>Option</p>
+                                        <ul className="detail-list">
+                                            <li>{data.second_stage.payloads.option_1}</li>
+                                            <li>{data.second_stage.payloads.option_2}</li>
+                                        </ul>
+
+                                        <p>Payload fairing</p>
+                                        <table className="detail-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td className="detail-sub">height</td>
+                                                    <td className="detail-value">
+                                                        {commaNumber(data.second_stage.payloads.composite_fairing.height.meters)} m / <span>{commaNumber(data.second_stage.payloads.composite_fairing.height.feet)} f</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">diameter</td>
+                                                    <td className="detail-value">
+                                                        {commaNumber(data.second_stage.payloads.composite_fairing.diameter.meters)} m / <span>{commaNumber(data.second_stage.payloads.composite_fairing.diameter.feet)} f</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </TabPane>
+                            </TabContent>
+
+                        </div>
+                    </div>
+                </SwiperSlide>
+
+                {/* 5: Payload */}
+                {/* <SwiperSlide>
+                    <div className="swiperPage">
+                        <div className="detail-overvie">
+                            <h4>{data.rocket_name}</h4>
+                            <h1>Payload weight</h1>
+
+
+                        </div>
+
                         {data.payload_weights.map((payload) => {
                             return (
                                 <ul>
@@ -84,55 +312,117 @@ const RenderPage = (props) => {
                             )
                         })}
                     </div>
-                </SwiperSlide>
+                </SwiperSlide> */}
+
+                {/* 6: Engines */}
                 <SwiperSlide>
                     <div className="swiperPage">
-                        <h1>first_stage</h1>
-                        <h6>engines : {data.first_stage.engines}</h6>
-                        <h6>fuel_amount_tons : {data.first_stage.fuel_amount_tons}</h6>
-                        <h6>burn_time : {data.first_stage.burn_time_sec} sec</h6>
-                        <h5>thrust_sea_level</h5>
-                        <h6>kN : {data.first_stage.thrust_sea_level.kN}</h6>
-                        <h6>lbf : {data.first_stage.thrust_sea_level.lbf}</h6>
-                        <h5>thrust_vacuum</h5>
-                        <h6>kN : {data.first_stage.thrust_vacuum.kN}</h6>
-                        <h6>lbf : {data.first_stage.thrust_vacuum.lbf}</h6>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="swiperPage">
-                        <h1>second_stage</h1>
-                        <h6>engines : {data.second_stage.engines}</h6>
-                        <h6>fuel_amount : {data.second_stage.fuel_amount_tons} tons</h6>
-                        <h6>burn_time : {data.second_stage.burn_time_sec} sec</h6>
-                        <h5>thrust</h5>
-                        <h6>kN : {data.second_stage.thrust.kN}</h6>
-                        <h6>lbf : {data.second_stage.thrust.lbf}</h6>
-                        <h2>Payloads</h2>
-                        <h6>option_1 : {data.second_stage.payloads.option_1}</h6>
-                        <h6>option_2 : {data.second_stage.payloads.option_2}</h6>
-                        <h3>composite_fairing</h3>
-                        <h6>height : {data.second_stage.payloads.composite_fairing.height.meters}m. or {data.second_stage.payloads.composite_fairing.height.feet}f</h6>
-                        <h6>diameter : {data.second_stage.payloads.composite_fairing.diameter.meters}m. or {data.second_stage.payloads.composite_fairing.diameter.feet}f</h6>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="swiperPage">
-                        <h1>Engines</h1>
-                        <h6>number : {data.engines.number}</h6>
-                        <h6>type : {data.engines.type}</h6>
-                        <h6>version : {data.engines.version}</h6>
-                        <h6>layout : {data.engines.layout}</h6>
-                        <h6>engine loss max : {data.engines.engine_loss_max}</h6>
-                        <h6>propellant_1 : {data.engines.propellant_1}</h6>
-                        <h6>propellant_2 : {data.engines.propellant_2}</h6>
-                        <h3>thrust_sea_level</h3>
-                        <h6>kN : {data.engines.thrust_sea_level.kN}</h6>
-                        <h6>lbf : {data.engines.thrust_sea_level.lbf}</h6>
-                        <h3>thrust_vacuum</h3>
-                        <h6>kN : {data.engines.thrust_vacuum.kN}</h6>
-                        <h6>lbf : {data.engines.thrust_vacuum.lbf}</h6>
-                        <h6>thrust_to_weight : {data.engines.thrust_to_weight}</h6>
+                        <div className="detail-overview" style={{textTransform: "capitalize"}}>
+                            <h4>{data.rocket_name} Engines</h4>
+                            <h1>{data.engines.type}</h1>
+
+                            <Nav tabs>
+                                <NavItem className="tab-nav">
+                                    <NavLink
+                                        className={activeTab == '1' ? 'active' : ''}
+                                        onClick={() => setActiveTab('1')}
+                                    >
+                                        overview
+                                    </NavLink>
+                                </NavItem>
+
+                                <NavItem className="tab-nav">
+                                    <NavLink
+                                        className={activeTab == '2' ? 'active' : ''}
+                                        onClick={() => setActiveTab('2')}
+                                    >
+                                        sea Level
+                                    </NavLink>
+                                </NavItem>
+
+                                <NavItem className="tab-nav">
+                                    <NavLink
+                                        className={activeTab == '3' ? 'active' : ''}
+                                        onClick={() => setActiveTab('3')}
+                                    >
+                                        vacuum
+                                    </NavLink>
+                                </NavItem>
+                            </Nav>
+
+                            <TabContent activeTab={activeTab} className="content-tab">
+
+                                <TabPane tabId="1">
+                                    <div className="inner-content-tab">
+                                        <table className="detail-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td className="detail-sub">number of engines</td>
+                                                    <td className="detail-value">{data.engines.number}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">version</td>
+                                                    <td className="detail-value">{data.engines.version}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">layout</td>
+                                                    <td className="detail-value">{data.engines.layout}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">engine loss max</td>
+                                                    <td className="detail-value">{data.engines.engine_loss_max}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className="detail-sub">thrust to weight</td>
+                                                    <td className="detail-value">
+                                                        {commaNumber(data.engines.thrust_to_weight)} N
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </TabPane>
+
+                                <TabPane tabId="2">
+                                    <div className="inner-content-tab">
+                                        <p>Propellant</p>
+                                        <ul className="detail-list">
+                                            <li>{data.engines.propellant_1}</li>
+                                            <li>{data.engines.propellant_2}</li>
+                                        </ul>
+
+                                        <table className="detail-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td className="detail-sub">thrust</td>
+                                                    <td className="detail-value">
+                                                        {commaNumber(data.engines.thrust_sea_level.kN)} kN / <span>{commaNumber(data.engines.thrust_sea_level.lbf)} lbf</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </TabPane>
+
+                                <TabPane tabId="3">
+                                    <div className="inner-content-tab">
+                                        <table className="detail-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td className="detail-sub">thrust</td>
+                                                    <td className="detail-value">
+                                                        {commaNumber(data.engines.thrust_vacuum.kN)} kN / <span>{commaNumber(data.engines.thrust_vacuum.lbf)} lbf</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </TabPane>
+
+                            </TabContent>
+
+                        </div>
+
                     </div>
                 </SwiperSlide>
 

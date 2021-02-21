@@ -67,6 +67,7 @@ td.detail-value span {
 .tab-nav a {
     color: #fff;
     text-transform: uppercase;
+    font-size: 1vmax;
 }
 
 .tab-nav a:hover {

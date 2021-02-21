@@ -2,7 +2,7 @@
 
 /* Homepage */
 .home-header {
-    height: calc(100vh - 55px);
+    height: calc(100vh - 80px);
     width: 100%;
     background-image: url("../img/header.jpg");
     background-size: cover;

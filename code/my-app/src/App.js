@@ -26,58 +26,58 @@ const App = () => {
     height: "90%"
   }
   const burgerToggle = () => {
-		let linksEl = document.querySelector('.narrowLinks');
-		if (linksEl.style.display === 'block') {
-			linksEl.style.display = 'none';
-		} else {
-			linksEl.style.display = 'block';
-		}
-	}
+    let linksEl = document.querySelector('.narrowLinks');
+    if (linksEl.style.display === 'block') {
+      linksEl.style.display = 'none';
+    } else {
+      linksEl.style.display = 'block';
+    }
+  }
   return (
 
     <Router>
       <nav>
-       <Link to="/">
+        <Link to="/">
           <div className="logo-img">
             <img src={logo} alt="" style={logoStyle} />
           </div>
         </Link>
-				<div className="navWide">
-					<div className="wideDiv nav-menu">
+        <div className="navWide">
+          <div className="wideDiv nav-menu">
             <NavLink exact to="/" className="nav-menu" activeClassName="is-active">
-            <li>Home</li>
-          </NavLink>
+              <li>Home</li>
+            </NavLink>
 
-          <NavLink to="/Rockets" className="nav-menu" activeClassName="is-active">
-            <li>Rockets</li>
-          </NavLink>
+            <NavLink to="/Rockets" className="nav-menu" activeClassName="is-active">
+              <li>Rockets</li>
+            </NavLink>
 
-          <NavLink to="/Launches" className="nav-menu" activeClassName="is-active">
-            <li>Launches</li>
-          </NavLink>
-					</div>
-				</div>
-				<div className="navNarrow">
+            <NavLink to="/Launches" className="nav-menu" activeClassName="is-active">
+              <li>Launches</li>
+            </NavLink>
+          </div>
+        </div>
+        <div className="navNarrow">
           {/* <i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i> */}
           <i onClick={burgerToggle}>
-          <Hamburger direction="right"/>
+            <Hamburger direction="right" />
           </i>
-          
-					<div className="narrowLinks nav-menu">
+
+          <div className="narrowLinks nav-menu">
             <NavLink exact to="/" className="nav-menu" activeClassName="is-active">
-            <li>Home</li>
-          </NavLink>
+              <li>Home</li>
+            </NavLink>
 
-          <NavLink to="/Rockets" className="nav-menu" activeClassName="is-active">
-            <li>Rockets</li>
-          </NavLink>
+            <NavLink to="/Rockets" className="nav-menu" activeClassName="is-active">
+              <li>Rockets</li>
+            </NavLink>
 
-          <NavLink to="/Launches" className="nav-menu" activeClassName="is-active">
-            <li>Launches</li>
-          </NavLink>
-					</div>
-				</div>
-			</nav>
+            <NavLink to="/Launches" className="nav-menu" activeClassName="is-active">
+              <li>Launches</li>
+            </NavLink>
+          </div>
+        </div>
+      </nav>
       {/* <div class="topnav">
         Left - logo
 

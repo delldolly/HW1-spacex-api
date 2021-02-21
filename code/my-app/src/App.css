@@ -42,9 +42,14 @@ a.nav-menu:hover {
   text-decoration: none;
 }
 
+.logo-img-panal {
+  padding: 1vmax 1vmax;
+  height: 4.5vmax;
+}
+
 .logo-img {
-  padding: 0 1vmax;
-  height: 35px;
+  padding: 1vmax 1vmax;
+  height: 4.5vmax;
   float: left;
 }
 
@@ -59,9 +64,6 @@ a.nav-menu:hover {
   display: flex;
   align-items: center;
   
-  display: flex;
-  align-items: center;
-  
   list-style-type: none;
 }
 
@@ -69,4 +71,10 @@ a.nav-menu:hover {
   background-color: rgb(255, 187, 0);
   color: black;
   font-weight: 900;
+}
+
+@media (max-width: 635px) {
+  .logo-img-panel {
+    height: 35px;
+  }
 }

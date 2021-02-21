@@ -60,7 +60,7 @@ nav	a:visited {
 }
 
 
-@media (min-width: 630px) {
+@media (min-width: 635px) {
     nav .navWide {
 	    display: block;
     }

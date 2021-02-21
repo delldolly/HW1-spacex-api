@@ -26,7 +26,7 @@ export default function Rockets() {
         };
         fetchData();
     }, []);
-    
+
     const buttonStyle = {
         fontSize: "1.5vmax",
         fontWeight: "700"
@@ -40,8 +40,8 @@ export default function Rockets() {
                         <div className='inner-left-middle'>
                             <h1>{item.rocket_name}</h1>
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;{item.description}</p>
-                            
-                            <Link to={"/Rockets/"+(item.rocket_id)}>
+
+                            <Link to={"/Rockets/" + (item.rocket_id)}>
                                 <Button outline color="warning" size="lg" style={buttonStyle}>View Detail</Button>
                             </Link>
                         </div>

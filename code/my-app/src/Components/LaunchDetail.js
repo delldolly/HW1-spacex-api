@@ -25,7 +25,7 @@ function RenderPage(props){
             <h6>{data.static_fire_date_utc}</h6>
             <h6>{data.tentative_max_precision}</h6>
             <h1>ROCKET </h1>
-            <Link to={"/RocketsDetail/"+(data.rocket.rocket_id)}><h6>name : {data.rocket.rocket_name}</h6></Link>
+            <Link to={"/Rockets/"+(data.rocket.rocket_id)}><h6>name : {data.rocket.rocket_name}</h6></Link>
             <h6>type : {data.rocket.rocket_type}</h6>
         </>
     )
@@ -38,7 +38,7 @@ export default function LauncheDetail(){
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(
-                'https://api.spacexdata.com/v3/launches/'+id,
+                'https://api.spacexdata.com/v3/launches/' + id,
             );
             setData(result.data);
             console.log(result.data)

@@ -185,7 +185,7 @@ const RenderPage = (props) => {
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">material</td>
-                                                    <td className="detail-value">{data.landing_legs.material}</td>
+                                                    <td className="detail-value">{data.landing_legs.material!=null?data.landing_legs.material:"-"}</td>
                                                 </tr>
                                             </tbody>
                                         </table>

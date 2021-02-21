@@ -17,6 +17,7 @@ import Rockets from './Components/Rockets';
 import Launches from './Components/Launches';
 import LaunchDetail from './Components/LaunchDetail';
 import RocketsDetail from './Components/RocketsDetail';
+import Hamburger from 'hamburger-react'
 
 import logo from './img/logo.png';
 
@@ -59,8 +60,9 @@ const App = () => {
 				<div className="navNarrow">
           {/* <i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i> */}
           <i onClick={burgerToggle}>
-          icon
+          <Hamburger direction="right"/>
           </i>
+          
 					<div className="narrowLinks nav-menu">
             <NavLink exact to="/" className="nav-menu" activeClassName="is-active">
             <li>Home</li>

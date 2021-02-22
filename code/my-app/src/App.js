@@ -25,6 +25,9 @@ const App = () => {
   const logoStyle = {
     height: "90%"
   }
+  const navHeight = {
+    height: "80px"
+  }
   const burgerToggle = () => {
     let linksEl = document.querySelector('.narrowLinks');
     if (linksEl.style.display === 'block') {
@@ -36,7 +39,7 @@ const App = () => {
   return (
 
     <Router>
-      <nav>
+      <nav style={navHeight}>
         <Link to="/">
           <div className="logo-img">
             <img src={logo} alt="" style={logoStyle} />
@@ -60,7 +63,7 @@ const App = () => {
         <div className="navNarrow">
           {/* <i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i> */}
           <i onClick={burgerToggle}>
-            <Hamburger direction="right" />
+            <Hamburger direction="right" size={20}/>
           </i>
 
           <div className="narrowLinks nav-menu">

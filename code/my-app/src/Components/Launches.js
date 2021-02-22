@@ -150,8 +150,8 @@ export default function Launches() {
 
             <thead>
               <tr>
-                <th>flight_number</th>
-                <th>mission_name</th>
+                <th>flight number</th>
+                <th>mission name</th>
                 <th>launch year</th>
                 <th>rocket name</th>
                 <th>launch success</th>

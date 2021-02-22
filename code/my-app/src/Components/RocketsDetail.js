@@ -116,7 +116,7 @@ const RenderPage = (props) => {
                 {/* 2: Launches */}
                 <SwiperSlide>
                     <div className="swiperPage" style={{ backgroundImage: `url(${imgBG[data.id][1]})` }}>
-                        <div className="detail-overview">
+                        <div className="detail-overview launches">
                             <h4>{data.rocket_name}</h4>
                             <h1>Launches</h1>
 

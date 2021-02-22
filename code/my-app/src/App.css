@@ -49,7 +49,7 @@ a.nav-menu:hover {
 
 .logo-img {
   padding: 1vmax 1vmax;
-  height: 4.5vmax;
+  height: 4vmax;
   float: left;
 }
 
@@ -76,5 +76,9 @@ a.nav-menu:hover {
 @media (max-width: 635px) {
   .logo-img-panel {
     height: 35px;
+  }
+
+  .nav-menu {
+    font-size: 2vmax;
   }
 }

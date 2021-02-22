@@ -36,6 +36,7 @@ Select {
     position: sticky;
     top: 0;
     background-color: #202d40;
+    text-transform: capitalize;
 }
 
 .launches-table thead {

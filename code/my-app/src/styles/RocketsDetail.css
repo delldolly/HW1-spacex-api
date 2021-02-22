@@ -1,7 +1,7 @@
 /* Swiper Slide */
 .swiperPage{
     width: 100%;
-    background-color: #555;
+    background-color: #000;
     color: #fff;
 
     height: calc(100vh - 80px);
@@ -13,10 +13,16 @@
 }
 
 .detail-overview {
-    padding: 0 7vmin;
+    margin: 0 2vmin;
+    padding: 4vmin 5vmin;
     display: flex;
     flex-direction: column;
     width: calc(100vw - 50%);
+    border-radius: 20px;
+}
+
+.detail-overview.launches {
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .detail-overview h1 {

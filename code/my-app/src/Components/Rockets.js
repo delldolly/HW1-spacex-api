@@ -42,7 +42,7 @@ export default function Rockets() {
                             <p>&nbsp;&nbsp;&nbsp;&nbsp;{item.description}</p>
 
                             <Link to={"/Rockets/" + (item.rocket_id)}>
-                                <Button outline color="warning" size="lg" style={buttonStyle}>View Detail</Button>
+                                <Button outline color="warning" size="lg" style={buttonStyle}>Learn More</Button>
                             </Link>
                         </div>
                     </div>

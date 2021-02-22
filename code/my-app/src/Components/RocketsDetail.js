@@ -181,7 +181,7 @@ const RenderPage = (props) => {
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">fuel amount</td>
-                                                    <td className="detail-value">{data.first_stage.fuel_amount_tons} tons</td>
+                                                    <td className="detail-value">{commaNumber(data.first_stage.fuel_amount_tons)} tons</td>
                                                 </tr>
                                                 <tr>
                                                     <td className="detail-sub">burn time</td>

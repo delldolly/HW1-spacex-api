@@ -39,7 +39,7 @@ const App = () => {
   return (
 
     <Router>
-      <nav style={navHeight}>
+      <nav>
         <Link to="/">
           <div className="logo-img">
             <img src={logo} alt="" style={logoStyle} />

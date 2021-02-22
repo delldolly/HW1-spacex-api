@@ -1,3 +1,6 @@
 
 .DS_Store
 code/my-app/.eslintrc
+
+# Local Netlify folder
+.netlify

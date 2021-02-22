@@ -73,6 +73,10 @@ a.nav-menu:hover {
   font-weight: 900;
 }
 
+.navWide {
+  margin: 0;
+}
+
 @media (max-width: 635px) {
   .logo-img-panel {
     height: 35px;

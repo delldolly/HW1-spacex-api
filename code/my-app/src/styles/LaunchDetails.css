@@ -111,7 +111,7 @@ td.detail-value {
     justify-content: center;
 }
 
-.launches-detail.row {
+.launches-detail div.row {
     width: 100vw;
 }
 

@@ -1,31 +1,24 @@
 nav {
 	background-color: #00F;
 	overflow: hidden;
-    padding: 1em;
-    border-bottom: 1px solid #000;
+    padding: 10px 3vmin;
     background-color: rgba(35, 35, 35, 0.7);
     position: sticky;
     top: 0;
-    /* height: 55px; */
     z-index: 2;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
 }
 nav a {
-		color: #FFF;
-	}
+	color: #FFF;
+}
 
 nav	a:visited {
-		color: #FFF;
-	}
+	color: #FFF;
+}
 
-	
 
 .navWide {
 	display: none;
-    margin: 0 auto;
+    margin: 0;
     float: right;
 }
 .navWide.wideDiv {
@@ -37,10 +30,7 @@ nav	a:visited {
 	display: inline-block;
 	padding: 0 2em;
 }
-		
-	
 
-	
 
 .navNarrow i {
 	float: right;
@@ -56,7 +46,6 @@ nav	a:visited {
 	display: block;
 	float: right;
 	clear: right;
-	padding: 0.5em 0;
 }
 
 

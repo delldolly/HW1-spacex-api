@@ -68,8 +68,7 @@ export default function Launches() {
   }
 
   const selectStyle = {
-    paddingRight: "0.5vmax",
-    paddingLeft: "0.5vmax",
+    padding: "0.5vmax"
   }
 
   const rowSty = {

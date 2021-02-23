@@ -2,6 +2,10 @@
     height: calc(100vh - 80px);
     color: #fff;
     padding: 2vmin 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
 }
 
 /* Image */
@@ -107,7 +111,15 @@ td.detail-value {
     justify-content: center;
 }
 
+.launches-detail.row {
+    width: 100vw;
+}
+
 @media only screen and (max-width: 767px) {
+    .launches-detail {
+        height: auto;
+    }
+
     .mission-patch {
         width: 30vmax;
     }

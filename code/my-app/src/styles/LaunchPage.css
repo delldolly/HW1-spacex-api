@@ -10,6 +10,7 @@ Select {
 .listTable:hover {
     background-color: rgb(255, 187, 0);
     color: #000;
+    cursor: pointer;
 }
 
 .launches-cont {
